@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>7b Sign In Link</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<!--//js-->
+	<!--css-->
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+
+	<!--<script>
+		//$(document).bind("mobileinit", function() {
+		// $.support.cors = true;
+		// $.mobile.allowCrossDomainPages = true;
+		//});
+
+		$(document).ready(function() {
+
+			if (window.localStorage.getItem("GetK") !== null) {
+
+				//window.location.href = "my-membership.html"; // signout if no key set to local
+
+			}
+
+			$("#buto").click(function(e) {
+				e.preventDefault();
+
+				$.blockUI({
+					message: null
+				});
+
+				//var dg='{email: "' + $("#email").val() + '", password : "' + $("#pass").val() + '", type : "Login"}';
+				jQuery.ajax({
+						url: apiurl,
+						type: 'POST',
+						dataType: "json",
+
+						data: {
+							"page": "forgetpassword",
+							"email": "" + $("#email").val() + ""
+						},
+						success: function(r) {
+							if (r.status > 1) {
+								$.unblockUI();
+
+								navigator.notification.alert('Email address not found!', null, 'Error', 'Done');
+
+
+							}
+							if (r.status == 1) {
+								$.unblockUI();
+								navigator.notification.alert('Please check your email', null, 'Success', 'Done');
+
+
+							}
+						},
+						error: function(r2) {
+							//$.unblockUI();
+							//navigator.notification.alert('Please try again!',null,'Error','Done');
+
+						}
+					}
+
+				);
+
+			});
+		});
+	</script>-->
+	<!--//css-->
+</head>
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<div class="container">
+		<div class="row-0">
+			<form style=" margin-top: 60px;">
+				<div class="form-group">
+					<input class="form-control input-md text-center" type="email" id="email" name="email" placeholder="Enter your email">
+				</div>
+			</form>
+		</div>
+		<div class="row-0">
+			<div class="text-center">
+				<a id="buto" class="btn btn-md btn-topright" id="sevenEnter">Enter</a>
+			</div>
+		</div>
+		<div class="row-0">
+			<div class="sevenB">
+				<p class="text-center">We can email you a link that will automatically log you in.</p>
+			</div>
+			<div class="text-center">
+				<a href="5-Sign-UP-Page-1.html"><button onclick="location.href='5-Sign-UP-Page-1.html'" type="button" class="btn btn-topright btn-md align-center">Login</button></a>
+			</div>
+		</div>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+</body>
+
+</html>

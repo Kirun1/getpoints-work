@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>b-new 1</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/dist/checkbox.css">
+	<link rel="stylesheet" type="text/css" href="css/10-My-Memberships-Lists.css" media="all">
+	<!-- //Custom Theme files -->
+	<script src="../js/jquery/jquery-1.8.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/dd.css" />
+	<script src="../js/msdropdown/jquery.dd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/flags.css" />
+	<link rel="stylesheet" type="text/css" href="../css/modal.css" />
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="js/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+	<!-- THIS LINE -->
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9Ilr1Tt0a7RqyeQUZrcVJ4u6K_rgo_SM&sensor=true" type="text/javascript"></script>
+
+	<style>
+		.container-fluid {
+    position: relative;
+    font-family: Roboto;
+}
+
+.text-block {
+    position: absolute;
+    bottom: 10px;
+    background-color: transparent;
+    color: #4a4a4a;
+    padding-left: 20px;
+    padding-right: 20px;
+  text-align: left;
+  width: 80%;
+
+}
+    #MNahmen {
+      text-align: left;
+      padding: 5px 0px 0px 10px;
+    }
+    #MNahmenContainer {
+      padding: 0;
+    }
+    #Nahmen-col {
+      padding: 0;
+    }
+    #bg-Mnahmen {
+      background-color: #ffffff;
+      padding: 0;
+    }
+    #MNahmen-p {
+      padding: 5px 0px 0px 10px;
+    }
+
+</style>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script>
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		function onDeviceReady() {
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		}
+
+		var onSuccess = function(position) {
+
+			window.localStorage.setItem("mylat", position.coords.latitude);
+			window.localStorage.setItem("mylng", position.coords.longitude);
+			//window.location.href = "b-near-by-places.html";
+		};
+		// onError Callback receives a PositionError object
+		//
+		function onError(error) {
+			// navigator.notification.alert('Turn your location ON in order to get correct results',null,'Error','Done');
+			//window.location.href = "b-near-by-places.html";
+		}
+	</script>
+	<script>
+		$(document).ready(function() {
+
+			if (window.localStorage.getItem("GetK") === null)
+				window.location.href = "5-Sign-UP-Page-1.html"; // signout if no key set to local
+
+			var id = getUrlVars()["id"];
+			if (id == '')
+				window.location.href = "10-My-Memberships-Lists.html"; // signout if no key set to local
+
+
+
+			var mycountry = '';
+			var mycity = '';
+			$("#countries").change(function() {
+
+				var sel3 = $("#city");
+				sel3.empty();
+
+				$("#city").find('option').remove();
+				var id = $(this).val();
+				$.ajax({
+					type: "GET",
+					url: "" + apiurl + "?page=city&fill=" + id + "",
+
+					success: function(data) {
+						for (var i = 0; i < data.length; i++) {
+							sel3.append('<option value="' + data[i].id + '">' + data[i].desc + '</option>');
+						}
+					}
+				});
+			});
+
+			//#####################################################################
+			$.post("" + apiurl + "?page=categories", {
+					'k': window.localStorage.getItem("GetK")
+				},
+				function(data) {
+					var sel = $("#cats");
+					var sel2 = $("#countries");
+					var sel3 = $("#city");
+					sel.empty();
+					sel2.empty();
+					sel3.empty();
+					for (var i = 0; i < data.cat.length; i++) {
+
+						sel.append('<option value="' + data.cat[i].id + '">' + data.cat[i].desc + '</option>');
+					}
+					for (var i = 0; i < data.country.length; i++) {
+						if (data.country[i].selec == 0)
+							sel2.append('<option value="' + data.country[i].id + '">' + data.country[i].desc + '</option>');
+						else {
+							mycountry = data.country[i].id;
+
+							sel2.append('<option value="' + data.country[i].id + '" selected="">' + data.country[i].desc + '</option>');
+						}
+					}
+					for (var i = 0; i < data.city.length; i++) {
+						if (data.city[i].selec == 0)
+							sel3.append('<option value="' + data.city[i].id + '">' + data.city[i].desc + '</option>');
+						else {
+							mycity = data.city[i].id;
+							sel3.append('<option value="' + data.city[i].id + '" selected="">' + data.city[i].desc + '</option>');
+						}
+					}
+				}, "json");
+			//countries
+
+
+
+			//##### Default load #############################################################\\
+			function sleeps(ms) {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+
+			async function demo() {
+
+				await sleeps(2000);
+				var mylat;
+				var mylng;
+
+				//Time between marker refreshes
+				var INTERVAL = 3000000; // set map interval for 30 seconds
+
+				//Used to remember markers
+				var markerStore = {};
+
+				if (localStorage.getItem("zoomd") == null) {
+					localStorage.setItem("zoomd", 16);
+
+				}
+				var zoomdd = localStorage.getItem("zoomd");
+
+
+				$.ajax({
+					async: false,
+					url: apiurl + '?page=nmap&s=0&country=' + mycountry + '&city=' + mycity + '&cat=' + $("#cats").val() + '&k=' + window.localStorage.getItem("GetK"),
+					success: function(data) {
+						mylat = data.lat;
+						mylng = data.lng;
+					}
+				});
+
+				//alert(mylat);
+				var myLatlng = new google.maps.LatLng(mylat, mylng);
+				var myOptions = {
+					zoom: parseInt(zoomdd),
+					center: myLatlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP,
+				}
+				var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+				getMarkers();
+
+				function getMarkers() {
+					console.log('getMarkers');
+					$.get(apiurl + '?page=nmap&s=1&country=' + mycountry + '&city=' + mycity + '&cat=' + $("#cats").val() + '&k=' + window.localStorage.getItem("GetK"), {}, function(res, resp) { // load.php page show fresh data of current rider and load into map
+						console.dir(res);
+						for (var i = 0, len = res.length; i < len; i++) {
+
+							//Do we have this marker already?
+							if (markerStore.hasOwnProperty(res[i].id)) {
+								console.log('just funna move it...');
+								markerStore[res[i].id].setPosition(new google.maps.LatLng(res[i].position.lat, res[i].position.long));
+							} else {
+
+
+
+								infowindow = new google.maps.InfoWindow({
+									content: "holding..."
+								});
+
+
+
+								var icon = {
+
+									url: res[i].pic, // url
+									scaledSize: new google.maps.Size(30, 30), // scaled size
+									origin: new google.maps.Point(0, 0), // origin
+									anchor: new google.maps.Point(0, 0), // anchor
+
+								};
+
+
+								//https://fusiontables.google.com/DataSource?docid=1BDnT5U1Spyaes0Nj3DXciJKa_tuu7CzNRXWdVA#rows:id=1
+								var marker = new google.maps.Marker({
+									position: new google.maps.LatLng(res[i].position.lat, res[i].position.long),
+									title: res[i].name,
+									html: '<h2>hello</h2>',
+									rotation: 'heading',
+									icon: icon,
+									map: map
+								});
+
+
+								markerStore[res[i].id] = marker;
+								console.log(marker.getTitle());
+
+								google.maps.event.addListener(marker, 'click', (function(marker, i) {
+
+									map.setZoom(13);
+
+									return function() {
+										infowindow.setContent(res[i].html);
+										infowindow.open(map, marker);
+									}
+								})(marker, i));
+							}
+						}
+						window.setTimeout(getMarkers, INTERVAL);
+					}, "json");
+				}
+
+				google.maps.event.addDomListener(map, 'zoom_changed', function() {
+					var zoom = map.getZoom();
+
+					localStorage.setItem("zoomd", zoom);
+
+				});
+			}
+
+
+			demo();
+
+
+			//######  End of Default Load ####################################################\\
+
+			//###################################################################
+			$("#enlarged").click(function(e) {
+				e.preventDefault();
+				var mylat;
+				var mylng;
+
+				//Time between marker refreshes
+				var INTERVAL = 3000000; // set map interval for 30 seconds
+
+				//Used to remember markers
+				var markerStore = {};
+
+				if (localStorage.getItem("zoomd") == null) {
+					localStorage.setItem("zoomd", 16);
+
+				}
+				var zoomdd = localStorage.getItem("zoomd");
+
+
+				$.ajax({
+					async: false,
+					url: apiurl + '?page=nmap&s=0&country=' + $("#countries").val() + '&city=' + $("#city").val() + '&cat=' + $("#cats").val() + '&k=' + window.localStorage.getItem("GetK"),
+					success: function(data) {
+						mylat = data.lat;
+						mylng = data.lng;
+					}
+				});
+
+				//alert(mylat);
+				var myLatlng = new google.maps.LatLng(mylat, mylng);
+				var myOptions = {
+					zoom: parseInt(zoomdd),
+					center: myLatlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP,
+				}
+				var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+				getMarkers();
+
+				function getMarkers() {
+					console.log('getMarkers');
+					$.get(apiurl + '?page=nmap&s=1&country=' + $("#countries").val() + '&city=' + $("#city").val() + '&cat=' + $("#cats").val() + '&k=' + window.localStorage.getItem("GetK"), {}, function(res, resp) { // load.php page show fresh data of current rider and load into map
+						console.dir(res);
+						for (var i = 0, len = res.length; i < len; i++) {
+
+							//Do we have this marker already?
+							if (markerStore.hasOwnProperty(res[i].id)) {
+								console.log('just funna move it...');
+								markerStore[res[i].id].setPosition(new google.maps.LatLng(res[i].position.lat, res[i].position.long));
+							} else {
+
+
+
+								infowindow = new google.maps.InfoWindow({
+									content: "holding..."
+								});
+
+
+
+								var icon = {
+
+									url: res[i].pic, // url
+									scaledSize: new google.maps.Size(30, 30), // scaled size
+									origin: new google.maps.Point(0, 0), // origin
+									anchor: new google.maps.Point(0, 0), // anchor
+
+								};
+
+
+								//https://fusiontables.google.com/DataSource?docid=1BDnT5U1Spyaes0Nj3DXciJKa_tuu7CzNRXWdVA#rows:id=1
+								var marker = new google.maps.Marker({
+									position: new google.maps.LatLng(res[i].position.lat, res[i].position.long),
+									title: res[i].name,
+									html: '<h2>hello</h2>',
+									rotation: 'heading',
+									icon: icon,
+									map: map
+								});
+
+
+								markerStore[res[i].id] = marker;
+								console.log(marker.getTitle());
+
+								google.maps.event.addListener(marker, 'click', (function(marker, i) {
+
+									map.setZoom(13);
+
+									return function() {
+										infowindow.setContent(res[i].html);
+										infowindow.open(map, marker);
+									}
+								})(marker, i));
+							}
+						}
+						window.setTimeout(getMarkers, INTERVAL);
+					}, "json");
+				}
+
+				google.maps.event.addDomListener(map, 'zoom_changed', function() {
+					var zoom = map.getZoom();
+
+					localStorage.setItem("zoomd", zoom);
+
+				});
+
+			}); //end click
+
+		}); // end document ready
+
+
+
+
+		// google map
+	</script>
+
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+</head>
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/slide-from-top.js"></script>
+	<script type="text/javascript" src="js/side-menu.js"></script>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<!--Page header and Chevron-->
+	<div class="well text-center">
+		<h1><i action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" class="fa fa-angle-left">&nbsp;&nbsp;</i>Nearby Places</h1>
+	</div>
+	<!--//Page header and Chevron-->
+	<!--Search field Area-->
+	<div id="search-field" class="container">
+		<div class="row">
+			<form method="post">
+				<input type="hidden" name="k" id="k" />
+				<input type="hidden" name="page" id="page" value="myrewardlist" />
+				<div class="bg-search">
+					<!--country search field 1-->
+					<div class="form-group col-xs-5">
+						<select class="form-control" id="countries" name="country">
+
+						</select>
+					</div>
+					<!--//country search field-->
+					<!--city search field-->
+					<div class="form-group col-xs-5">
+						<select class="form-control" id="city" name="city">
+
+						</select>
+					</div>
+					<!--//city search field-->
+					<!--button-->
+					<!--<button id="danger" class="btn btn-danger btn-md col-xs-2">SAVE</button>-->
+					<!--//button-->
+				</div>
+
+				<div class="form-group col-xs-10">
+					<select class="form-control" id="cats" name="cat">
+
+					</select>
+
+					<input class="form-control" id="sk" name="sk" placeholder="Search here">
+
+				</div>
+				<button id="enlarged" class="btn btn-success btn-md col-xs-2">ENTER</button>
+			</form>
+			<!--//Search field Area 3-->
+			<!--button group-->
+			<div class="col-xs-6">
+				<button onclick="location.href='b-unlocked-rewards-membership-page.html'" class="btn btn-default btn-md btn-block"><span id="memb"></span> Memberships</button>
+			</div>
+			<div class="col-xs-4">
+				<button onclick="location.href='b-my-rewards.html'" type="button" class="btn btn-default btn-md btn-block"><img src="images/PadLocK.svg" class="PadLocK" alt="unlocked">&nbsp;Rewards</button>
+			</div>
+			<div class="col-xs-2">
+				<button class="btn btn-default btn-md btn-block">Map</button>
+			</div>
+			<!--//button group-->
+		</div>
+		<hr class="border_btn">
+		<input type="hidden" name="k" id="k" value="" />
+
+		<div class="alert alert-danger" id="error" style="display:none; text-align: center; margin-top: 20px;"></div>
+		<div class="alert alert-success" id="success" style="display:none; text-align: center; margin-top: 20px;">Reward successfully activated</div>
+		<div id="map_canvas" style="width: 100%; height: 400px;"></div>
+
+		<!-- menu-js -->
+		<script src="js/classie.js"></script>
+		<script src="js/main.js"></script>
+		<!-- //menu-js -->
+		<!-- nice scroll-js -->
+		<!--<script src="js/jquery.nicescroll.min.js"></script>-->
+		<!--<script src="js/nice-scroll.js"></script>-->
+		<!-- //nice scroll-js -->
+		<!-- Bootstrap core JavaScript
+	    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="js/bootstrap.js"></script>
+		<!-- //footer -->
+
+		<!-- form-effect -->
+		<script src="js/classie.js"></script>
+		<script src="js/form-effect.js"></script>
+		<!-- //form-effect -->
+		<script src="js/join.js"></script>
+
+</body>
+
+</html>

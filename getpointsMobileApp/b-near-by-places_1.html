@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Nearby Places</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/dist/checkbox.css">
+	<link rel="stylesheet" type="text/css" href="css/10-My-Memberships-Lists.css" media="all">
+	<!-- //Custom Theme files -->
+
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/dd.css" />
+	<script src="../js/msdropdown/jquery.dd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/flags.css" />
+	<!-- js -->
+	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+
+	<script src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script>
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		function onDeviceReady() {
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		}
+
+		var onSuccess = function(position) {
+
+			window.localStorage.setItem("mylat", position.coords.latitude);
+			window.localStorage.setItem("mylng", position.coords.longitude);
+			window.location.href = "b-near-by-places.html";
+		};
+		// onError Callback receives a PositionError object
+		//
+		function onError(error) {
+			navigator.notification.alert('Turn your location ON in order to get correct results', null, 'Error', 'Done');
+			window.localStorage.setItem("mylat", '');
+			window.localStorage.setItem("mylng", '');
+			window.location.href = "b-near-by-places.html";
+		}
+	</script>
+
+
+
+
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+</head>
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+
+		<!--//Rewards lists content-->
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+</body>
+
+</html>

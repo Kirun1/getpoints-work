@@ -1,0 +1,307 @@
+.navbar-text > a {
+	color: inherit;
+	text-decoration: none;
+}
+
+body {
+	padding-top: 70px;
+	padding-bottom: 100px;
+
+}
+.container form button.btn.btn-primary.btn-lg.align-center {
+			border-radius: 0 10px 10px;
+}
+.container form button.btn.btn-default.btn-lg.align-center {
+			border-radius: 0 10px 10px;
+}
+.container form button.btn.btn-success.btn-lg.align-center {
+			border-radius: 10px 0 10px 10px;
+}
+.container form a.btn.btn-success.btn-lg.align-center {
+			border-radius: 10px 0 10px 10px;
+}
+.container form button.btn.btn-danger.btn-lg.align-center {
+			border-radius: 0 10px 10px;
+}
+div.jumbotron.text-center{
+	background-color: transparent;
+}
+.img-responsive {
+	margin: auto;
+}
+div.button-group{
+	text-align:center;
+}
+html body.bg-rewards div.jumbotron {
+	background-color: transparent;
+	border-top: 1px solid #ccc;
+}
+a.btn.btn-success {
+	background-color:  #13a89e;
+	border-color: #13a89e;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.form-group {
+    margin-bottom: 8px;
+}
+#category {
+	margin-bottom: 8px;
+}
+#enlarged {
+	height: 75px;
+	border-radius: 0 10px 10px 10px;
+}
+#danger{
+	border-radius: 0 10px 10px 10px;
+}
+.bg-search {
+	background-color: turquoise;
+}
+.maincontainer {
+    width: 100%;
+    height: 70px;
+    border: 2px solid #13a89e;
+    margin: 10px auto 5px;
+    border-top-right-radius: 20px;
+}
+.leftcolumn {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 66px;
+    background: #fff;
+    text-align: center;
+}
+
+.contentwrapper {
+    float: left;
+    display: inline-block;
+    width: -moz-calc(100% - 100px);
+    width: -webkit-calc(100% - 100px);
+    width: calc(100% - 100px);
+    height: 66px;
+    background-color: #13a89e;
+    border-top-right-radius: 16px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500px;
+    color: #ffffff;
+}
+.maincontainer1 {
+    width: 100%;
+    height: 70px;
+    border: 2px solid #13a89e;
+    margin: 10px auto 5px;
+    border-top-right-radius: 20px;
+}
+.leftcolumn1 {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 66px;
+    background: #fff;
+    text-align: center;
+}
+
+.contentwrapper1 {
+    float: left;
+    display: inline-block;
+    width: -moz-calc(100% - 100px);
+    width: -webkit-calc(100% - 100px);
+    width: calc(100% - 100px);
+    height: 66px;
+    background-color: #13a89e;
+    border-top-right-radius: 16px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500px;
+    color: #ffffff;
+}
+.maincontainer1-U {
+    width: 100%;
+    height: 70px;
+    border: 2px solid #13a89e;
+    margin: 10px auto 5px;
+    border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+    min-width: 345px;
+}
+.leftcolumn1-U {
+    float: left;
+    display: inline-block;
+    width: 50px;
+    height: 66px;
+    background: #fff;
+    text-align: center;
+}
+
+.contentwrapper1-U {
+    float: left;
+    display: inline-block;
+    width: -moz-calc(100% - 100px);
+    width: -webkit-calc(100% - 100px);
+    width: calc(100% - 50px);
+    height: 66px;
+    background-color: #13a89e;
+    border-top-right-radius: 16px;		
+		border-bottom-right-radius: 16px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500px;
+    color: #ffffff;
+}
+div#Rewards-Visual-Display.container div.row div.col-xs-1 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#btn-gp {
+	height: 196px;
+	margin: auto;
+	width: 100%;
+	margin-top: 20px;
+	background-color: grey;
+}
+#btn-gp-biz {
+    height: 180px;
+    margin: auto;
+        margin-top: auto;
+    width: 100%;
+    margin-top: 20px;
+    background-color: grey;
+}
+.well {
+	background-color: #13a89e;
+	color: #fff;
+	margin-bottom: 0;
+}
+.well {
+	background-color: #13a89e;
+	color: #fff;
+	margin-bottom: 0;
+}
+@media only screen and (max-width: 420px) {
+	.well h1 {
+		font-size: 22px;
+		}
+}
+@media only screen and (max-width: 304px) {
+	.well h1 {
+		font-size: 18px;
+		}
+}
+button#eightExplore.btn.btn-success.btn-lg {
+	border-radius: 0 10px 10px;
+	background-color: #13a89e;
+	border-color: #13a89e;
+	margin-top: 60px;
+}
+.container form button.btn.btn-primary.btn-lg.align-center {
+	border-radius: 0 10px 10px;
+	margin-top: 50px;
+}
+/*@media only screen and (max-width: 374px) {
+	.logo {
+		display: none;
+		}
+}*/
+th {
+	text-align: center;
+	background-color: #ffffff;
+	color: #000;
+  font-size: xx-small;
+}
+.table {
+    width: 100%;
+    margin-bottom: 0px;
+    margin-top: 2px;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  padding: 4px;
+  font-size: xx-small;
+}
+body {
+width:100%;
+margin: auto;
+position:relative;
+}
+
+div.banner {
+background-image: url(../images/rewards-rule.jpg);
+background-repeat: no-repeat;
+background-position: top center;
+background-attachment: fixed;
+min-height: 150px
+
+}
+h3 {
+	text-align: center;
+   }
+p {
+	text-align: left;
+	margin-left: 10px;
+
+}
+p img.img-responsive {
+    width: 80px;
+    height: auto;
+    margin: 8px auto;
+}
+.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 40px solid #8bc53e;
+    border-right: 40px solid transparent;
+}
+.triangle > span {
+    position: absolute;
+    top: -40px;
+    left: 0px;
+    transform: rotate(-45deg);
+}
+.triangle > span {
+    font-size: 16px;
+    color: white;
+}
+table.table.table-borderless {
+	width: 50%;
+	margin: auto;
+}
+table.table.table-borderless tbody tr td{
+	border: 0;
+}
+#footer-buttons.container {
+	height:300px;
+	background-color: #13a89e;
+	margin: auto;
+	width: 100%;
+}
+button#btn1.btn.btn-default.btn-lg.btn-block {
+	margin-top: 10px;
+}
+#phoneMockup {
+	margin: auto 30%;
+
+}
+span.unlockedRewards {
+  font-size: 12px;
+}
+.inputWrapper{
+    display: inline-flex;
+    padding: 40px;
+}
+.cCodeInput{
+    width: 40%;
+    padding: 10px;
+}
+.cTelInput{
+    width: 60%;
+    padding: 10px;
+}

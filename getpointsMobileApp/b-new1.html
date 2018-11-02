@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>b-new 1</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style-old.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/dist/checkbox.css">
+	<link rel="stylesheet" type="text/css" href="css/10-My-Memberships-Lists.css" media="all">
+	<!-- //Custom Theme files -->
+	<script src="../js/jquery/jquery-1.8.2.min.js"></script>
+
+	<script src="../js/msdropdown/jquery.dd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/modal.css" media="all">
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="js/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+	<!-- THIS LINE -->
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9Ilr1Tt0a7RqyeQUZrcVJ4u6K_rgo_SM&sensor=true" type="text/javascript"></script>
+
+	<style>
+		.container-fluid {
+    position: relative;
+    font-family: Roboto;
+}
+
+.text-block {
+    position: absolute;
+    bottom: 10px;
+    background-color: transparent;
+    color: #4a4a4a;
+    padding-left: 20px;
+    padding-right: 20px;
+  text-align: left;
+  width: 80%;
+
+}
+    #MNahmen {
+      text-align: left;
+      padding: 5px 0px 0px 10px;
+    }
+    #MNahmenContainer {
+      padding: 0;
+    }
+    #Nahmen-col {
+      padding: 0;
+    }
+    #bg-Mnahmen {
+      background-color: #ffffff;
+      padding: 0;
+    }
+    #MNahmen-p {
+      padding: 5px 0px 0px 10px;
+    }
+
+</style>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+
+	<script>
+		$(document).ready(function() {
+
+			if (window.localStorage.getItem("GetK") === null)
+				window.location.href = "5-Sign-UP-Page-1.html"; // signout if no key set to local
+
+			var id = getUrlVars()["id"];
+			if (id == '')
+				window.location.href = "b-near-by-places.html"; // signout if no key set to local
+			//
+
+			//################## dafult load ################################################################
+			$.blockUI({
+				message: null
+			});
+			jQuery.ajax({
+					url: apiurl,
+					type: 'POST',
+					dataType: "HTML",
+					data: {
+						page: 'merchantdetail',
+						id: id,
+						k: window.localStorage.getItem("GetK")
+					},
+					success: function(r) {
+
+						if (r.status == 1) {
+							$.unblockUI();
+							$("#success").show();
+							$("#success").html("No Reward Found");
+						} else {
+							$.unblockUI();
+							$("#loaditnow").html(r);
+							// ######## LIVE ON ############################################################
+							$("#loaditnow").on("click", "#btJoin,#btRewards", function(e) {
+								e.preventDefault();
+								$.blockUI({
+									message: null
+								});
+								jQuery.ajax({
+										url: apiurl,
+										type: 'POST',
+										dataType: "json",
+										data: {
+											page: 'signupreward',
+											id: id,
+											k: window.localStorage.getItem("GetK")
+										},
+										success: function(r) {
+
+											if (r.status == 5) {
+												$.unblockUI();
+												$("#error").show().delay(4000).fadeOut();
+												$("#error").html(r.message);
+												window.scrollTo(0, 0);
+											}
+											if (r.status == 2) {
+												$.unblockUI();
+												$("#error").show().delay(4000).fadeOut();
+												$("#error").html(r.message);
+												window.scrollTo(0, 0);
+											}
+											if (r.status == 1) {
+												$.unblockUI();
+												$('#join').modal('show');
+											}
+
+										} // end success
+									} // end jquery
+
+								); // end jquery .ajax
+							}); // end .ON
+							// End LIVE ON ########################################################################
+							// ######## LIVE ON for PIN ############################################################
+							$("#loaditnow").on("click", "#approve", function(e) {
+
+								e.preventDefault();
+								$.blockUI({
+									message: null
+								});
+
+								jQuery.ajax({
+										url: apiurl,
+										type: 'POST',
+										dataType: "json",
+										data: {
+											page2: 'redeemreward',
+											id: id,
+											k: window.localStorage.getItem("GetK"),
+											rid: $("#rid").val(),
+											pin: $("#pin").val(),
+											ename: $("#ename").val()
+										},
+										success: function(r) {
+
+
+											if (r.status == 2) {
+												$.unblockUI();
+												$("#error31").show().delay(10000).fadeOut();
+												$("#error31").html("Invalid pin code!");
+											}
+											if (r.status == 1) {
+												$.unblockUI();
+												$('#redeem-reward-modal3').modal('toggle');
+
+
+											}
+
+											window.scrollTo(0, 0);
+										}
+									}
+
+								);
+							}); // end .ON
+							// ######### end pin code live on ###################
+
+							$("#loaditnow").on("click", "#sendfeedback", function(e) {
+
+								e.preventDefault();
+								$.blockUI({
+									message: null
+								});
+
+								jQuery.ajax({
+										url: apiurl,
+										type: 'POST',
+										dataType: "json",
+										data: {
+											page: 'savefeedback',
+											comments: $("#comments").val(),
+											em: $("#em").val(),
+											mid: id,
+											k: window.localStorage.getItem("GetK")
+										},
+										success: function(r) {
+
+
+											if (r.status == 2) {
+												$.unblockUI();
+												$("#error4").show().delay(4000).fadeOut();
+												$("#error4").html("Please enter your comments!");
+											}
+											if (r.status == 5) {
+												$.unblockUI();
+												$("#error4").show().delay(4000).fadeOut();
+												$("#error4").html("No user found");
+											}
+											if (r.status == 1) {
+												$.unblockUI();
+												window.location = "43-Feedback-Page-Alway-Welcome.html";
+
+												//43-Feedback-Page-Alway-Welcome.html
+											}
+
+
+										}
+									}
+
+								);
+							}); // end .ON
+							// end feedback
+
+
+							$("#loaditnow").on("click", "#emailn,#mobilen", function(e) {
+
+
+								if (document.getElementById('emailn').checked) {
+									var emailn = 1;
+								} else {
+									var emailn = 0;
+								}
+
+								if (document.getElementById('mobilen').checked) {
+									var mobilen = 1;
+								} else {
+									var mobilen = 0;
+								}
+
+								jQuery.ajax({
+										url: apiurl,
+										type: 'POST',
+										dataType: "json",
+										data: {
+											page: 'alerts',
+											mid: id,
+											emailn: emailn,
+											mobilen: mobilen,
+											k: window.localStorage.getItem("GetK")
+										},
+										success: function(r) {
+
+
+
+										}
+									}
+
+								);
+							}); // end .ON
+							// end feedback
+
+
+						} // end else
+					} // end success
+				}
+
+			);
+
+
+			//###################################################################
+			var mylat;
+			var mylng;
+			$("#loaditnow").on("click", "#bt4", function(e) {
+				//Time between marker refreshes
+				var INTERVAL = 30000; // set map interval for 30 seconds
+
+				//Used to remember markers
+				var markerStore = {};
+
+				if (localStorage.getItem("zoomd") == null) {
+					localStorage.setItem("zoomd", 16);
+
+				}
+				var zoomdd = localStorage.getItem("zoomd");
+
+
+				$.ajax({
+					async: false,
+					url: apiurl + '?page=onemap&s=1&mid=' + id,
+					success: function(data) {
+						mylat = data.lat;
+						mylng = data.lng;
+					}
+				});
+
+				//alert(mylat);
+				var myLatlng = new google.maps.LatLng(mylat, mylng);
+				var myOptions = {
+					zoom: parseInt(zoomdd),
+					center: myLatlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP,
+				}
+				var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+				getMarkers();
+
+				function getMarkers() {
+					console.log('getMarkers');
+					$.get(apiurl + '?page=onemap&mid=' + id, {}, function(res, resp) { // load.php page show fresh data of current rider and load into map
+						console.dir(res);
+						for (var i = 0, len = res.length; i < len; i++) {
+
+							//Do we have this marker already?
+							if (markerStore.hasOwnProperty(res[i].id)) {
+								console.log('just funna move it...');
+								markerStore[res[i].id].setPosition(new google.maps.LatLng(res[i].position.lat, res[i].position.long));
+							} else {
+
+
+
+								infowindow = new google.maps.InfoWindow({
+									content: "holding..."
+								});
+
+
+
+								var icon = {
+
+									url: res[i].pic, // url
+									scaledSize: new google.maps.Size(30, 30), // scaled size
+									origin: new google.maps.Point(0, 0), // origin
+									anchor: new google.maps.Point(0, 0), // anchor
+
+								};
+
+
+								//https://fusiontables.google.com/DataSource?docid=1BDnT5U1Spyaes0Nj3DXciJKa_tuu7CzNRXWdVA#rows:id=1
+								var marker = new google.maps.Marker({
+									position: new google.maps.LatLng(res[i].position.lat, res[i].position.long),
+									title: res[i].name,
+									html: '<h2>hello</h2>',
+									rotation: 'heading',
+									icon: icon,
+									map: map
+								});
+
+
+								markerStore[res[i].id] = marker;
+								console.log(marker.getTitle());
+
+								google.maps.event.addListener(marker, 'click', (function(marker, i) {
+
+									map.setZoom(16);
+
+									return function() {
+										infowindow.setContent(res[i].html);
+										infowindow.open(map, marker);
+									}
+								})(marker, i));
+							}
+						}
+						window.setTimeout(getMarkers, INTERVAL);
+					}, "json");
+				}
+
+				google.maps.event.addDomListener(map, 'zoom_changed', function() {
+					var zoom = map.getZoom();
+
+					localStorage.setItem("zoomd", zoom);
+
+				});
+
+
+
+
+
+
+			}); // end live on
+
+
+
+		}); // end document ready
+
+
+
+
+		// google map
+	</script>
+
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+</head>
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/slide-from-top.js"></script>
+	<script type="text/javascript" src="js/side-menu.js"></script>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<!--Page header and Chevron-->
+	<input type="hidden" name="k" id="k" value="" />
+
+	<div class="alert alert-danger" id="error" style="display:none; text-align: center; margin-top: 20px;"></div>
+	<div class="alert alert-success" id="success" style="display:none; text-align: center; margin-top: 20px;">Reward successfully activated</div>
+	<div id="loaditnow"></div>
+
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<!--<script src="js/jquery.nicescroll.min.js"></script>-->
+	<!--<script src="js/nice-scroll.js"></script>-->
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+	<script src="js/join.js"></script>
+	<script>
+		function sho(id) {
+
+
+			if ($("#" + id + "").css('display') === 'block') {
+				$("#" + id + "").hide();
+			} else {
+				$("#home").hide();
+				$("#feedback").hide();
+				$("#rules").hide();
+				$("#noti").hide();
+				$("#about").hide();
+				$("#hours").hide();
+				$("#gallery").hide();
+				$("#location").hide();
+				$("#" + id + "").show();
+
+				//alert("ok");
+			}
+
+
+
+		}
+	</script>
+
+
+
+
+
+
+</body>
+
+</html>

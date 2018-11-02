@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>28 Email Support</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<!-- //Custom Theme files -->
+
+	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<!-- js -->
+
+
+	<!-- <script>
+		$(document).ready(function() {
+
+			$("#k").val(window.localStorage.getItem("GetK"));
+			//// Fetch data
+			if (window.localStorage.getItem("GetK") === null) {
+				window.location.href = "2-intro-page.html"; // signout if no key set to local
+			}
+
+			$("#Submit").click(function(e) {
+				e.preventDefault();
+				$.blockUI({
+					message: null
+				});
+
+				jQuery.ajax({
+						url: apiurl,
+						type: 'POST',
+						dataType: "json",
+						data: $('form').serialize(),
+						success: function(r) {
+
+
+							if (r.status == 11) {
+
+								$.unblockUI();
+
+
+							}
+							if (r.status == 1) {
+
+								$.unblockUI();
+
+								//
+								$("#message").val("");
+								window.location.href = "43-Feedback-Page-Alway-Welcome.html";
+							}
+							window.scrollTo(0, 0);
+						}
+					}
+
+				);
+
+
+			}); // end submit
+
+
+		}); // end document ready
+	</script> -->
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/slide-from-top.js"></script>
+	<script type="text/javascript" src="js/side-menu.js"></script>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<div class="well text-center">
+		<h1 style='margin-top: 10px;'><i action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" class="fa fa-angle-left">&nbsp;&nbsp;</i>Email Support</h1>
+	</div>
+	<form>
+		<div class="alert alert-success" id="success" style="display: none"></div>
+		<div class="container text-center">
+			<textarea name="message" id="message" placeholder="Enter your message" class="jumbotron email-support" style='border: 2px solid #13a89e; padding: 10px; width: 100%; margin-top: 20px; height: 150px;' placeholder=""></textarea>
+
+		</div>
+		<input type="hidden" name="k" id="k" value="" />
+		<input type="hidden" name="page" id="page" value="emailsupport" />
+	</form>	
+	<div class="button-group">
+		<button action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" class="btn btn-topleft btn-lg align-center">CANCEL</button>
+		<button class="btn btn-topright btn-lg align-center" id="Submit">SUBMIT</button>
+	</div>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	</div>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+</body>
+
+</html>

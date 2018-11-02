@@ -1,0 +1,199 @@
+html {
+	font-size: 1rem;
+}
+.well {
+	background-color: #13a89e;
+	color: #fff;
+	margin-bottom: 0;
+}
+@media only screen and (max-width: 420px) {
+	.well h1 {
+		font-size: 24px;
+		}
+}
+@media only screen and (max-width: 304px) {
+	.well h1 {
+		font-size: 18px;
+		}
+}
+.nav_main .mobile-side-menu li a img {
+	width: 30px;
+	height: 25px;
+}
+.nav_main .agile_container .agile_nav_main_left .toggleMenu {
+	display: inline-block;
+}
+.nav_main .agile_container .agile_nav_main_left .toggleMenu a div {
+	width: 35px;
+	height: 5px;
+	background-color: #8cc542;
+	margin: 6px 0;
+}
+.container form {
+	text-align: center;
+	margin-top: 50px;
+}
+.container form button.btn.btn-primary.btn-lg.align-center {
+	border-radius: 0 10px 10px;
+	margin-top: 50px;
+}
+	div.banner span.circle.col-lg-6.col-md-6.col-sm-7.col-xs-7 {
+		font-size: 14px;
+	}
+	tr,th {
+		font-size: 12px;
+	}
+
+}
+@media only screen and (max-width: 768px) {
+	div.banner span.circle.col-lg-6.col-md-6.col-sm-7.col-xs-7 {
+		font-size: 4vw;
+	}
+	tr,th {
+		font-size: 12px;
+	}
+
+}
+@media only screen and (max-width: 1024px) {
+	div img.img-circle.img-responsive.col-lg-2.col-md-2.col-sm-4.col-xs-4 {
+	}
+	div.banner span.circle.col-lg-6.col-md-6.col-sm-7.col-xs-7 {
+		font-size: 4vw;
+	}
+}
+@media only screen and (max-width: 1440px) {
+	div img.img-circle.img-responsive.col-lg-2.col-md-2.col-sm-4.col-xs-4 {
+	}
+	div.banner span.circle.col-lg-6.col-md-6.col-sm-7.col-xs-7 {
+		font-size: 4vw;
+		margin-top: 20px;
+	}
+}
+th {
+	text-align: center;
+	background-color: #ffffff;
+	color: #000;
+}
+body {
+width:100%;
+margin: auto;
+position:relative;
+}
+
+div.banner {
+background-image: url(../images/rewards-rule.jpg);
+background-repeat: no-repeat;
+background-position: top center;
+background-attachment: fixed;
+min-height: auto;
+
+}
+h3 {
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+   }
+p {
+	text-align: center;
+}
+button#btn1.btn.btn-default.btn-lg.btn-block {
+	margin-top: 10px;
+}
+.button-group div {
+	margin: 20px auto;
+}
+/*--img.img-circle {
+	margin: 40px auto auto;
+}--*/
+.banner span {
+	background-color: #fff;
+	font-size: 16px;
+	border-radius: 10px 10px 0 0;
+	border-bottom: 3px solid #d1d2d4;
+}
+#maincontainer {
+    width: 90%;
+    height: 64px;
+    border: 2px solid #13a89e;
+    margin: 10px auto 5px;
+    border-top-right-radius: 20px;
+}
+#leftcolumn {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 60px;
+    background: #fff;
+    text-align: center;
+}
+
+#contentwrapper {
+    float: left;
+    display: inline-block;
+    width: -moz-calc(100% - 100px);
+    width: -webkit-calc(100% - 100px);
+    width: calc(100% - 100px);
+    height: 60px;
+    background-color: #13a89e;
+    border-top-right-radius: 16px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500px;
+    color: #ffffff;
+}
+#btn1-success {
+	margin-top: 20px;
+	height: 100px;
+
+}
+#contentwrapper p span {
+	margin-right: 20px;
+}
+a.btn.btn-danger.btn-lg.col-lg-2 {
+	margin-top: 0;
+}
+div#memberships-page-join.container {
+	background-color: transparent;
+}
+p span a.btn.btn-default {
+	background-color: #13a89e;
+	border-color: #13a89e;
+	margin-left: 0px;
+}
+#Rewards-Visual-Display {
+	height: auto;
+	background-color: #fff;
+	margin-bottom: 10px;
+}
+a.glyphicon.glyphicon-chevron-down.pull-right {
+	margin-right: 20px;
+	color: #fff;
+}
+#redeem-button {
+	width: 100%;
+	text-align: center;
+}
+div#memberships-page-join.container button.btn.btn-lg.btn-success {
+
+}
+h3.f-h, h3#h22, h3#h23 {
+	border-bottom: 0;
+}
+form#f2.modal-content.animate, form#f222.modal-content.animate, {
+	margin-top: 220px;
+}
+h3.text-white {
+	color: #fff;
+	border: 0;
+}
+.s-h {
+	margin: 20px;
+}
+#redeem-reward-modal2 #f22 #md22 div div div.form-group {
+	margin: 40px auto;
+}
+#banner-content {
+	padding-top: 60px;
+}
+.clearfix {
+	overflow: auto;
+}

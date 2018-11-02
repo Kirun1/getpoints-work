@@ -1,0 +1,98 @@
+.well {
+	background-color: #13a89e;
+	color: #fff;
+	margin-bottom: 0;
+}
+@media only screen and (max-width: 420px) {
+	.well h1 {
+		font-size: 24px;
+		}
+}
+@media only screen and (max-width: 304px) {
+	.well h1 {
+		font-size: 18px;
+		}
+}
+.nav_main .mobile-side-menu li a img {
+	width: 30px;
+	height: 25px;
+}
+.nav_main .agile_container .agile_nav_main_left .toggleMenu {
+	display: inline-block;
+}
+.nav_main .agile_container .agile_nav_main_left .toggleMenu a div {
+	width: 35px;
+	height: 5px;
+	background-color: #8cc542;
+	margin: 6px 0;
+}
+.container form {
+	text-align: center;
+	margin-top: 50px;
+}
+.container form button.btn.btn-primary.btn-lg.align-center {
+	border-radius: 0 10px 10px;
+	margin-top: 50px;
+}
+th {
+	text-align: center;
+	background-color: #13a89e;
+	color: #ffffff;
+}
+body {
+width:100%;
+margin: auto;
+position:relative;
+}
+
+div.banner {
+background-image: url(../images/rewards-rule.jpg);
+background-repeat: no-repeat;
+background-position: top center;
+background-attachment: fixed;
+min-height: 150px
+
+}
+h3 {
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+   }
+p {
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+}
+table.table.table-borderless {
+	width: 100%;
+	margin: auto;
+}
+table.table.table-borderless tbody tr td{
+	border: 0;
+}
+.container {
+	height:200px;
+	background-color: #13a89e;
+	margin: auto;
+	width: 100%;
+}
+button#btn1.btn.btn-default.btn-lg.btn-block {
+	margin-top: 30px;
+}
+.button-group div {
+	margin: 20px auto;
+}
+img.img-circle {
+	margin: 40px 20px auto;
+}
+.banner span {
+	background-color: #fff;
+	font-size: 16px;
+	margin-top: 60px;
+	border-radius: 10px 10px 0 0;
+	border-bottom: 3px solid #ccc;
+}
+#about.text-left p {
+	text-align: left;
+}
+div#banner-content.clearfix img.img-responsive.pull-left {
+	padding-top: 60px;
+}

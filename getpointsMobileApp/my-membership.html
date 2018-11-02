@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>My Memberships Lists</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/dist/checkbox.css">
+	<link rel="stylesheet" type="text/css" href="css/10-My-Memberships-Lists.css" media="all">
+	<!-- //Custom Theme files -->
+	<script src="../js/jquery/jquery-1.8.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/dd.css" />
+	<script src="../js/msdropdown/jquery.dd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/flags.css" />
+	<!-- js -->
+	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+
+	<script src="js/jquery.cookie.js"></script>
+	<script>
+		window.location.href = "b-unlocked-rewards-membership-page.html";
+
+		var mp = "";
+		var lat = $.cookie("MyLat");
+		var lng = $.cookie("MyLon");
+		$(document).ready(function() {
+
+
+			$("#k").val(window.localStorage.getItem("GetK"));
+			//// Fetch data
+			if (window.localStorage.getItem("GetK") === null)
+				window.location.href = "5-Sign-UP-Page-1.html"; // signout if no key set to local
+
+
+			$("#countries").change(function() {
+
+				var sel3 = $("#city");
+				sel3.empty();
+
+				$("#city").find('option').remove();
+				var id = $(this).val();
+				$.ajax({
+					type: "GET",
+					url: "" + apiurl + "?page=city&fill=" + id + "",
+
+					success: function(data) {
+						for (var i = 0; i < data.length; i++) {
+							sel3.append('<option value="' + data[i].id + '">' + data[i].desc + '</option>');
+						}
+					}
+				});
+			});
+
+			//#####################################################################
+			$.post("" + apiurl + "?page=categories", {
+					'k': window.localStorage.getItem("GetK")
+				},
+				function(data) {
+					var sel = $("#cats");
+					var sel2 = $("#countries");
+					var sel3 = $("#city");
+					sel.empty();
+					sel2.empty();
+					sel3.empty();
+					for (var i = 0; i < data.cat.length; i++) {
+
+						sel.append('<option value="' + data.cat[i].id + '">' + data.cat[i].desc + '</option>');
+					}
+					for (var i = 0; i < data.country.length; i++) {
+						if (data.country[i].selec == 0)
+							sel2.append('<option value="' + data.country[i].id + '">' + data.country[i].desc + '</option>');
+						else
+							sel2.append('<option value="' + data.country[i].id + '" selected="">' + data.country[i].desc + '</option>');
+					}
+					for (var i = 0; i < data.city.length; i++) {
+						if (data.city[i].selec == 0)
+							sel3.append('<option value="' + data.city[i].id + '">' + data.city[i].desc + '</option>');
+						else
+							sel3.append('<option value="' + data.city[i].id + '" selected="">' + data.city[i].desc + '</option>');
+					}
+				}, "json");
+			//countries
+
+
+			//################## dafult load ################################################################
+			$.blockUI({
+				message: null
+			});
+			jQuery.ajax({
+					url: apiurl,
+					type: 'POST',
+					dataType: "json",
+					data: $('form').serialize(),
+					success: function(r) {
+
+						if (r.status == 1) {
+
+							$.unblockUI();
+							$("#loadit").html();
+							$("#success").show();
+							$("#success").html("No Reward Found<br /><a href='10-My-Memberships-Lists.html' class='btn btn-warning'>Explore</a>");
+
+						} else {
+							$("#success").hide();
+							$.unblockUI();
+							var dt = '';
+							jQuery.each(r, function(index, r) {
+								dt += '<a href="11a-My-Memberships-Page-Join.html?id=' + r.mid + '"><div id="maincontainer"><div id="leftcolumn"><p><img src="' + r.logo +
+									'" alt="merchant logo" class="img-responsive"></p></div><div id="contentwrapper">&nbsp;<div id="merchantsName"><p>' + r.mname + '<br /> ' + r.city + ', ' + r.country +
+									'</p></div>&nbsp;&nbsp;<div id="glyph"><span class="glyphicon glyphicon-chevron-right pull-right"></span></div></div></div></a>';
+
+							});
+
+							$("#loadit").html(dt);
+
+						}
+					}
+				}
+
+			);
+
+
+			//###################################################################
+
+			$("#Submit").click(function(e) {
+				e.preventDefault();
+				$.blockUI({
+					message: null
+				});
+				jQuery.ajax({
+						url: apiurl,
+						type: 'POST',
+						dataType: "json",
+						data: $('form').serialize(),
+						success: function(r) {
+
+							if (r.status == 1) {
+
+								$.unblockUI();
+
+								$("#success").show();
+								$("#success").html("No Reward Found<br /><a href='10-My-Memberships-Lists.html' class='btn btn-warning'>Explore</a>");
+								("#loadit").html('');
+							} else {
+								$.unblockUI();
+								$("#success").hide();
+								var dt = '';
+								jQuery.each(r, function(index, r) {
+									dt += '<a href="11a-My-Memberships-Page-Join.html?id=' + r.mid + '"><div id="maincontainer"><div id="leftcolumn"><p><img src="' + r.logo +
+										'" alt="merchant logo" class="img-responsive"></p></div><div id="contentwrapper">&nbsp;<div id="merchantsName"><p>' + r.mname + '<br /> ' + r.city + ', ' + r.country +
+										'</p></div>&nbsp;&nbsp;<div id="glyph"><span class="glyphicon glyphicon-chevron-right pull-right"></span></div></div></div></a>';
+
+								});
+
+								$("#loadit").html(dt);
+
+							}
+						}
+					}
+
+				);
+			}); // end submit
+
+
+		}); // end document ready
+
+
+
+
+		// google map
+	</script>
+
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<script>
+		$(function() {
+			$("#loadsidehtml").load("side.html");
+		});
+	</script>
+
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<style>@media only screen and (max-width: 374px) {
+                                                        .logo {
+
+                                                                }
+                                                }</style>
+						<img src="images/logo.png" class="img-responsive" alt="logo" style="margin-top: 7px;" width="200" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/slide-from-top.js"></script>
+	<script type="text/javascript" src="js/side-menu.js"></script>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+
+
+	<!--Page header and Chevron-->
+	<div class="well text-center">
+		<h1><span onclick="javascript:history.back(1)" class="glyphicon glyphicon-chevron-left" style="margin-top: 15px">&nbsp;&nbsp;</span>My Memberships</h1>
+	</div>
+	<!--//Page header and Chevron-->
+	<!--Search field Area-->
+	<div id="search-field" class="container">
+		<form>
+			<input type="hidden" name="k" id="k" />
+			<input type="hidden" name="page" id="page" value="myrewardlist" />
+			<!--country search field 1-->
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<select class="form-control" id="countries" name="country">
+					<option>Uganda</option>
+					<option>Kenya</option>
+					<option>Tanzania</option>
+					<option>South Africa</option>
+					<option>United States</option>
+				</select>
+			</div>
+			<!--//country search field-->
+			<!--city search field-->
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<select class="form-control" id="city" name="city">
+
+				</select>
+			</div>
+
+
+			<!--//search field area 1-->
+			<!--Search field area 2-->
+
+
+			<div class="form-group col-lg-10 col-md-10 col-sm-12 col-xs-12">
+				<select class="form-control" id="cats" name="cat">
+					<option>Category</option>
+					<option>category 1</option>
+					<option>category 2</option>
+					<option>category 3</option>
+					<option>category 4</option>
+				</select>
+			</div>
+			<button id="Submit" class="btn btn-warning btn-md col-lg-2 col-md-2 col-sm-12 col-xs-12" style="background: #5fb5aa; border: 0px;">SEARCH</button>
+		</form>
+		<!--//Search field area 2-->
+		<!--Search field Area 3-->
+
+		<!--//Search field Area 3-->
+		<!--button group-->
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="display:none">
+			<button class="btn btn-default btn-md btn-block">View My Unlocked Rewards</button>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="display:none">
+			<button class="btn btn-default btn-md btn-block">Membership XX</button>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="display:none">
+			<button class="btn btn-default btn-md btn-block">Map View</button>
+		</div>
+		<!--//button group-->
+	</div>
+	<!--Rewards lists content-->
+	<div class="container alert alert-info" id="success" style="display:none; text-align: center"></div>
+	<div class="container" id="loadit">
+
+
+	</div>
+	<!--//Rewards lists content-->
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	</div>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+</body>
+
+</html>

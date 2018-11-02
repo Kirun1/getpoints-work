@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>26 My History</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/dist/checkbox.css">
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+
+	<script src="js/jquery.cookie.js"></script>
+	<!--<script>
+		var mp = "";
+		var lat = $.cookie("MyLat");
+		var lng = $.cookie("MyLon");
+		$(document).ready(function() {
+
+
+			$("#k").val(window.localStorage.getItem("GetK"));
+			//// Fetch data
+			if (window.localStorage.getItem("GetK") === null)
+				window.location.href = "2-intro-page.html"; // signout if no key set to local
+
+
+
+
+			$.blockUI({
+				message: null
+			});
+			jQuery.ajax({
+					url: apiurl,
+					type: 'POST',
+					dataType: "json",
+					data: $('form').serialize(),
+					success: function(r) {
+
+						if (r.status == 1) {
+
+							$.unblockUI();
+							$("#mess").html();
+							$("#mess").show();
+							$("#mess").html("No Visit found");
+							$("#tablo").hide();
+						} else {
+							$("#success").hide();
+							$.unblockUI();
+							var dt = '';
+							jQuery.each(r, function(index, r) {
+								dt += '<tr><td>' + r.pdate + '</td><td>' + r.bname + 'a</td><td>' + r.visit + '</td><td>1 Point</td></tr>';
+
+							});
+
+							$("#loadit").html(dt);
+
+						}
+					}
+				}
+
+			);
+
+
+
+		}); // end document ready
+	</script>-->
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<script>
+		$(function() {
+			$("#loadsidehtml").load("side.html");
+		});
+	</script>
+
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" style="margin-top: 7px;" width="200" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/slide-from-top.js"></script>
+	<script type="text/javascript" src="js/side-menu.js"></script>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<!-- //nav -->
+	<form><input type="hidden" name="k" id="k" /><input type="hidden" name="page" id="page" value="gethistory"></form>
+	<div class="well text-center">
+		<h1 style="margin-top: 15px;"><i action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" class="fa fa-angle-left">&nbsp;&nbsp;</i>My History</h1>
+	</div>
+	<div class="container">
+		<div class="container">
+			<div class="alert alert-info" id="mess" style="display: none; text-align: center"></div>
+			<table class="table table-bordered text-center table-hover" id="tablo">
+				<thead>
+					<tr>
+						<th>Date</th>
+
+						<th>Place</th>
+						<th>Visits</th>
+						<th>Points</th>
+					</tr>
+				</thead>
+				<tbody id="loadit">
+
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	</div>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+</body>
+
+</html>

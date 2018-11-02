@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Memberships Page</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/dist/checkbox.css">
+	<link rel="stylesheet" type="text/css" href="css/10-My-Memberships-Lists.css" media="all">
+	<!-- //Custom Theme files -->
+	<script src="../js/jquery/jquery-1.8.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/dd.css" />
+	<script src="../js/msdropdown/jquery.dd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/flags.css" />
+	<link rel="stylesheet" type="text/css" href="css/modal.css" media="all">
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="js/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+</head>
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu">
+			<ul>
+				<li class="active"><a href="b-unlocked-rewards-membership-page.html"><i><img src="images/My_Memberships.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>My Memberships</a></li>
+				<li><a href="b-my-rewards.html"><i><img src="images/My_Rewards.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>My Rewards</a></li>
+				<li><a href="b-near-by-places.html"><i><img src="images/Nearby_Places.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>Nearby Places</a></li>
+				<li><a href="24-QR-Code-scanner.html"><i><img src="images/QR_Code_Scanner1.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>QR code scanner</a></li>
+				<li><a href="22-My-QR-code.html"><i><img src="images/My_QR_Code1.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>My QR code</a></li>
+				<li><a href="send-a-gift.html"><i><img src="images/Gift_Rewards.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>Gifted Rewards</a></li>
+				<li><a href="26-My-History.html"><i><img src="images/My_History.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>My History</a></li>
+				<li><a href="27-Support.html"><i><img src="images/Support.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>Support</a></li>
+				<li><a href="35-Settings.html"><i><img src="images/Settings.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>Settings</a></li>
+				<li><a href="2-intro-page.html"><i><img src="images/Signout.svg">&nbsp;&nbsp;&nbsp;&nbsp;</i>Signout</a></li>
+			</ul>
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/slide-from-top.js"></script>
+	<script type="text/javascript" src="js/side-menu.js"></script>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<!--Page header and Chevron-->
+	<div class="well text-center">
+		<h4><i action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" class="fa fa-angle-left">&nbsp;&nbsp;</i>My Memberships</h4>
+	</div>
+	<!--//Page header and Chevron-->
+	<div class="banner">
+		<div id="banner-content" class="clearfix">
+			<img src="images/Bistro-01.svg" alt="Cinque Terre" class="img-responsive pull-left" id="merchantLogo">
+		</div>
+	</div>
+
+	<!--Search field Area-->
+	<div id="search-field" class="container">
+		<div class="row-0">
+			<div id="idBnew1Btn" class="btn-group btn-group-justified">
+				<a href="#" id="bt1" onclick="location.href='32-About-Us.html'" class="btn btn-borderless">About</a>
+				<a href="#" id="bt2" onclick="location.href='13a-trading-Hours.html'" class="btn btn-borderless">Hours</a>
+				<a href="#" id="bt3" onclick="location.href='b-gallery.html'" class="btn btn-borderless">Gallery</a>
+				<a href="#" id="bt4" onclick="location.href='13b-Location.html'" class="btn btn-borderless">Map</a>
+			</div>
+		</div>
+	</div>
+	<hr class="bg-green-a m-0">
+	<div id="search-field" class="container">
+		<div class="row-0">
+			<div id="gp-btn-join" class="btn-group btn-group-justified">
+				<a href="#" id="btRewards" class="btn btn-default btn-lg">
+					<div class="container">
+						<div class="row-0">
+							<div class="col-xs-8">
+								<p>Limited Quantity & Time Offer</p>
+							</div>
+						</div>
+					</div>&nbsp;&nbsp;<i class="fa fa-plus"></i>
+				</a>
+				<a href="#" id="btJoin" class="btn btn-success btn-lg">Get a free Dessert on Tuesdays <span><i data-balloon-visible bg-white data-balloon-length="medium" data-balloon="Simply click on Join our Rewards to join their unique loyalty program"
+						  data-balloon-pos="up-right" class="fa fa-question-circle" aria-hidden="true"></i></span> </a>
+			</div>
+		</div>
+	</div>
+	<div class="">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>My Total Points</th>
+					<th>My Number in Visits </th>
+					<th>Redeemed Point</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="text-center">
+					<td>3</td>
+					<td>3</td>
+					<td>0</td>
+				</tr>
+			</tbody>
+		</table>
+		<!--Rewards lists content-->
+		<a class="bNew1RewardsLists" data-toggle="collapse" href="#collapse0" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<div class="maincontainer">
+				<div class="leftcolumn">
+					<p>New<br> Member</p>
+				</div>
+				<div class="contentwrapper">&nbsp;<div class="merchantsName">
+						<p>Earn a free soda</p>
+					</div><button type="button" id="rwdLock" class="btn btn-link btn-xs">Unlocked</button><i class="fa fa-angle-down pull-right"></i></div>
+			</div>
+		</a>
+		<div id="collapse0" class="collapse">
+			<div class="row">
+				<img src="images/gift.png" id="giftrwd" class="img-responsive col-xs-4">
+				<p id="rwdunlck" class="col-xs-4">Unlocked</p>
+				<button id="rwdunlck_btn" class="btn btn-success btn-sm col-xs-4">Redeem Reward</button>
+			</div>
+		</div>
+		<a class="bNew1RewardsLists" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<div class="maincontainer">
+				<div class="leftcolumn">
+					<p>10<br> Points</p>
+				</div>
+				<div class="contentwrapper">&nbsp;<div class="merchantsName">
+						<p>Earn a free Appetizer</p>
+					</div><button type="button" id="rwdLock1" class="btn btn-link btn-xs">Locked</button><i class="fa fa-angle-down pull-right"></i></div>
+			</div>
+		</a>
+		<div id="collapse1" class="collapse">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Points Required</th>
+						<th>Points Earned</th>
+						<th>Points Needed</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="text-center">
+						<td>10</td>
+						<td>3</td>
+						<td>7</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="Rewards-Visual-Display" class="container">
+				<div class="row">
+					<div class="col-xs-1"><img src="images/tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/gift.png" class="img-responsive"></div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<!--//Rewards lists content-->
+		<!--Modal 1 for Redemption Approval-->
+		<!----  modal 1   ---->
+		<div id="redeem-reward-modal" class="modal align-middle">
+			<form class="modal-content animate" action="" method="post" enctype="multipart/form-data" id="f2">
+
+				<div id="md1">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<img src="images/clear_logo.png" class="popup-img" />
+						</div>
+					</div>
+				</div>
+
+
+				<div id="md2">
+					<div class="text-center">
+						<div class="align-self-stretch">
+							<h3 class="f-h" style="text-align:center;"> A Great Reward </h3>
+							<h4 id="h22" style="text-align:center;"> (Description of the reward) </h4>
+							<h2 id="h23">
+								<div class="btnBlock text-center">
+									<a href="rewards.html" class="btn btn-danger btn-cons btn2" action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" size="14" id="check-in2"><strong> Go Back </strong> </a>
+									<a href="#" class="btn btn-success btn-cons btn2" id="join"><strong> Confirm </strong></a>
+								</div>
+							</h2>
+						</div>
+
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+
+
+		<!----  modal 4   ---->
+
+		<div id="redeem-reward-modal4" class="modal text-center">
+			<form class="modal-content animate" action="" method="post" enctype="multipart/form-data" id="f222">
+				<div id="md1">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<img src="images/clear_logo.png" class="popup-img" />
+						</div>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<h3 class="text-white">You have redeemed XX Points</h3>
+					</div>
+				</div>
+
+				<div id="md22">
+					<div class="text-center">
+						<div class="align-self-stretch">
+							<h3 class="f-h"> Enjoy! </h3>
+							<h3 id="h22"> (Description of the reward) </h3>
+							<h3 id="h23"> Show this reward redemption to cashier and they will get your reward </h3>
+
+							<h2 id="h23">
+								<div class="btnBlock text-center">
+									<a href="#" class="btn btn-success btn-block btn-cons btn22" id="done2">
+										<strong> Cashier Enter Code </strong> </a>
+								</div>
+							</h2>
+						</div>
+
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+
+		<!----  modal 2   ---->
+
+
+
+		<div id="redeem-reward-modal2" class="modal text-center">
+			<form class="modal-content animate" action="" method="post" enctype="multipart/form-data" id="f22">
+				<div id="md1">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<img src="images/clear_logo.png" class="popup-img" />
+						</div>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<h3 class="text-white"> You have redeemed XX Points</h3>
+					</div>
+				</div>
+
+
+				<div id="md22" class="cs">
+					<div class="text-center">
+						<div class="align-self-stretch">
+							<h4 id="h22"> (Description of the reward) </h4>
+							<h3 class="f-h"> Enjoy! </h3>
+							<h4 id="h23"> Show this reward redemption to the Manager and they will get your reward </h4>
+							<div class="s-h">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<input class="form-control input-md" id="ex1" type="password">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="cashier" placeholder="Manager put your full Name here">
+						</div>
+
+						<h2 id="h23">
+							<div class="btnBlock text-center">
+								<a href="rewards.html" class="btn btn-danger btn-lg btn-cons btn2" id="cancel"><strong> Cancel </strong> </a>
+								<a href="#" class="btn btn-success btn-lg btn-cons btn2" id="approve"><strong> Approve </strong></a>
+							</div>
+						</h2>
+
+					</div>
+
+				</div>
+		</div>
+
+		</form>
+	</div>
+
+
+	<!----  modal 3   ---->
+
+	<div id="redeem-reward-modal3" class="modal">
+		<form class="modal-content animate" action="" method="post" enctype="multipart/form-data" id="f2">
+			<div id="md1">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<img src="images/clear_logo.png" class="popup-img" />
+					</div>
+				</div>
+			</div>
+
+			<div id="md2">
+
+				<div class="text-center">
+					<div class="align-self-stretch">
+						<h3 class="f-h"> CONGRATULATIONS ON YOU REWARD </h3>
+						<h2 id="h23">
+							<div class="btnBlock">
+								<a href="b-new-memberships.html" class="btn btn-success btn-lg btn-cons pull-right btn2" id="done2"><strong> Done </strong> </a><br />
+							</div>
+						</h2><br />
+					</div><br />
+
+				</div>
+				<br />
+			</div>
+
+		</form>
+	</div>
+	<!--//Modal 4 for Redemption Approval-->
+	</div>
+	<div id="btn-gp">
+		<div class="container">
+			<div class="button-group dropdown">
+				<button id="btn1" onclick="location.href='b-new-business-information.html'" class="btn btn-default btn-lg btn-block dropdown-toggle btnBizInfo" type="button" data-toggle="dropdown">Business Information&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-down pull-right">&nbsp;&nbsp;</i></button>
+				<button id="btn2" onclick="location.href='send-a-gift.html'" class="btn btn-default btn-lg btn-block dropdown-toggle btnSendFeedback" type="button" data-toggle="dropdown">Send us Feedback&nbsp;&nbsp;&nbsp;&emsp;<i class="fa fa-angle-down pull-right">&nbsp;&nbsp;</i></button>
+				<button id="btn3" onclick="location.href='14-Rewards-Rules.html'" class="btn btn-default btn-lg btn-block dropdown-toggle btnRwdRules" type="button" data-toggle="dropdown">Reward Rules&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;<i class="fa fa-angle-down pull-right">&nbsp;&nbsp;</i></button>
+				<button id="btn4" onclick="location.href='7a-Signing-Up-Notifications.html'" class="btn btn-default btn-lg btn-block dropdown-toggle btnNotifs" type="button" data-toggle="dropdown">Notifications&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;<i class="fa fa-angle-down pull-right">&nbsp;&nbsp;</i></button>
+			</div>
+		</div>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+	<!--Redemption approval modals-->
+	<script src="js/redemption-approval.js"></script>
+</body>
+
+</html>

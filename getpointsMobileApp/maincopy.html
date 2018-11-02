@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>b-new 1</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/dist/checkbox.css">
+	<link rel="stylesheet" type="text/css" href="css/10-My-Memberships-Lists.css" media="all">
+	<!-- //Custom Theme files -->
+	<script src="../js/jquery/jquery-1.8.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/dd.css" />
+	<script src="../js/msdropdown/jquery.dd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/flags.css" />
+	<link rel="stylesheet" type="text/css" href="../css/modal.css" />
+	<link rel="stylesheet" type="text/css" href="css/14-Rewards-Rules.css" media="all">
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="js/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+	<script>
+		$(document).ready(function() {
+
+			if (window.localStorage.getItem("GetK") === null)
+				window.location.href = "5-Sign-UP-Page-1.html"; // signout if no key set to local
+
+			var id = getUrlVars()["id"];
+			if (id == '')
+				window.location.href = "10-My-Memberships-Lists.html"; // signout if no key set to local
+			//################## dafult load ################################################################
+			$.blockUI({
+				message: null
+			});
+			jQuery.ajax({
+					url: apiurl,
+					type: 'POST',
+					dataType: "HTML",
+					data: {
+						page: 'merchantdetail',
+						id: id,
+						k: window.localStorage.getItem("GetK")
+					},
+					success: function(r) {
+
+						if (r.status == 1) {
+							$.unblockUI();
+							$("#success").show();
+							$("#success").html("No Reward Found");
+						} else {
+							$.unblockUI();
+							$("#loaditnow").html(r);
+							// ######## LIVE ON ############################################################
+							$("#loaditnow").on("click", "#btn1-success", function(e) {
+								e.preventDefault();
+								$.blockUI({
+									message: null
+								});
+								jQuery.ajax({
+										url: apiurl,
+										type: 'POST',
+										dataType: "json",
+										data: {
+											page: 'signupreward',
+											id: id,
+											k: window.localStorage.getItem("GetK")
+										},
+										success: function(r) {
+
+											if (r.status == 5) {
+												$.unblockUI();
+												$("#error").show().delay(4000).fadeOut();
+												$("#error").html(r.message);
+												window.scrollTo(0, 0);
+											}
+											if (r.status == 2) {
+												$.unblockUI();
+												$("#error").show().delay(4000).fadeOut();
+												$("#error").html(r.message);
+												window.scrollTo(0, 0);
+											}
+											if (r.status == 1) {
+												$.unblockUI();
+												$("#success").show().delay(4000).fadeOut();
+												window.scrollTo(0, 0);
+												sleep(2000);
+												window.location.href = "11a-My-Memberships-Page-Join.html?id=" + id + "";
+											}
+
+										} // end success
+									} // end jquery
+
+								); // end jquery .ajax
+							}); // end .ON
+							// End LIVE ON ########################################################################
+							// ######## LIVE ON for PIN ############################################################
+							$("#loaditnow").on("click", "#approve", function(e) {
+
+								e.preventDefault();
+								$.blockUI({
+									message: null
+								});
+
+								jQuery.ajax({
+										url: apiurl,
+										type: 'POST',
+										dataType: "json",
+										data: $('form').serialize(),
+										success: function(r) {
+
+
+											if (r.status == 2) {
+												$.unblockUI();
+												$("#error3").show().delay(4000).fadeOut();
+												$("#error3").html("Invalid pin code!");
+											}
+											if (r.status == 1) {
+												$.unblockUI();
+												$('#redeem-reward-modal3').modal('toggle');
+
+
+											}
+
+											window.scrollTo(0, 0);
+										}
+									}
+
+								);
+							}); // end .ON
+							// ######### end pin code live on ###################
+
+							$("#loaditnow").on("click", "#sendfeedback", function(e) {
+
+								e.preventDefault();
+								$.blockUI({
+									message: null
+								});
+
+								jQuery.ajax({
+										url: apiurl,
+										type: 'POST',
+										dataType: "json",
+										data: {
+											page: 'savefeedback',
+											comments: $("#comments").val(),
+											mid: id,
+											k: window.localStorage.getItem("GetK")
+										},
+										success: function(r) {
+
+
+											if (r.status == 2) {
+												$.unblockUI();
+												$("#error4").show().delay(4000).fadeOut();
+												$("#error4").html("Please enter your comments!");
+											}
+											if (r.status == 5) {
+												$.unblockUI();
+												$("#error4").show().delay(4000).fadeOut();
+												$("#error4").html("No user found");
+											}
+											if (r.status == 1) {
+												$.unblockUI();
+												$("#success4").show().delay(4000).fadeOut();
+												$("#success4").html("Thank you for your feedback!");
+
+
+											}
+
+
+										}
+									}
+
+								);
+							}); // end .ON
+							// end feedback
+
+
+							$("#loaditnow").on("click", "#emailn,#mobilen", function(e) {
+
+
+								if (document.getElementById('emailn').checked) {
+									var emailn = 1;
+								} else {
+									var emailn = 0;
+								}
+
+								if (document.getElementById('mobilen').checked) {
+									var mobilen = 1;
+								} else {
+									var mobilen = 0;
+								}
+
+								jQuery.ajax({
+										url: apiurl,
+										type: 'POST',
+										dataType: "json",
+										data: {
+											page: 'alerts',
+											mid: id,
+											emailn: emailn,
+											mobilen: mobilen,
+											k: window.localStorage.getItem("GetK")
+										},
+										success: function(r) {
+
+
+
+										}
+									}
+
+								);
+							}); // end .ON
+							// end feedback
+
+
+						} // end else
+					} // end success
+				}
+
+			);
+
+
+			//###################################################################
+
+
+
+
+		}); // end document ready
+
+
+
+
+		// google map
+	</script>
+
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+</head>
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/slide-from-top.js"></script>
+	<script type="text/javascript" src="js/side-menu.js"></script>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<!--Page header and Chevron-->
+	<input type="hidden" name="k" id="k" value="" />
+	<div class="alert alert-danger" id="error" style="display:none; text-align: center; margin-top: 20px;"></div>
+	<div class="alert alert-success" id="success" style="display:none; text-align: center; margin-top: 20px;">Reward successfully activated</div>
+
+	<div class="well text-center">
+		<h1><i action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" class="fa fa-angle-left">&nbsp;&nbsp;</i>Nearby Places</h1>
+	</div>
+	<!--//Page header and Chevron-->
+	<div class="banner">
+		<div id="banner-content" class="clearfix">
+			<img src="images/Bistro-01.svg" alt="Cinque Terre" class="img-responsive pull-left" id="merchantLogo">
+		</div>
+	</div>
+
+	<!--Search field Area-->
+	<div id="search-field" class="container">
+		<div class="row">
+			<div id="idBnew1Btn" class="btn-group btn-group-justified">
+				<a href="javascript:void(0)" onclick="sho('about')" id="bt1" class="btn btn-default">About</a>
+				<a href="javascript:void(0)" id="bt2" onclick="sho('hours')" class="btn btn-default">Hours</a>
+				<a href="javascript:void(0)" onclick="sho('gallery')" id="bt3" onclick="location.href='b-gallery.html'" class="btn btn-default">Gallery</a>
+				<a href="javascript:void(0)" onclick="sho('location')" id="bt4" onclick="location.href='13b-Location.html'" class="btn btn-default">Map</a>
+			</div>
+
+			<div id="about" class="row" style="display:none; padding: 10px;">
+				<div class="well text-center">
+					<h1>About Us</h1>
+				</div>
+				<div class="container">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+						irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p><br>
+					<p>
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+						quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam
+						eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
+						reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+					</p>
+				</div>
+
+			</div>
+
+
+			<div id="hours" class="row" style="padding: 10px; display: none">
+				<div class="well text-center">
+					<h1>Business Information</h1>
+				</div>
+				<p style=" text-align: center">Trading Hours</p>
+				<table class="table table-borderless">
+					<tbody>
+						<tr>
+							<td>Monday</td>
+							<td class="text-right">xx To xx</td>
+						</tr>
+						<tr>
+							<td>Tuesday</td>
+							<td class="text-right">xx To xx</td>
+						</tr>
+						<tr>
+							<td>Wednesday</td>
+							<td class="text-right">xx To xx</td>
+						</tr>
+						<tr>
+							<td>Thursday</td>
+							<td class="text-right">xx To xx</td>
+						</tr>
+						<tr>
+							<td>Friday</td>
+							<td class="text-right">xx To xx</td>
+						</tr>
+						<tr>
+							<td>Saturday</td>
+							<td class="text-right">xx To xx</td>
+						</tr>
+						<tr>
+							<td>Sunday</td>
+							<td class="text-right">xx To xx</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+			<div id="gallery" style="row; padding: 10px; display: none">
+				<div class="well text-center">
+					<h1>Gallery</h1>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-4" style="text-align: center">
+						<a href="https://placeholder.com"><img src="http://via.placeholder.com/100x100"></a>
+					</div>
+					<div class="col-xs-4" style="text-align: center">
+						<a href="https://placeholder.com"><img src="http://via.placeholder.com/100x100"></a>
+					</div>
+					<div class="col-xs-4" style="text-align: center">
+						<a href="https://placeholder.com"><img src="http://via.placeholder.com/100x100"></a>
+					</div>
+				</div>
+			</div>
+
+			<div id="location" class="row" style="padding: 10px; display: none">
+				<div class="well text-center">
+					<h1>Map</h1>
+				</div>
+				<img src="images/googleMaps.jpg" class="img-responsive">
+
+			</div>
+			<div id="gp-btn-join" class="btn-group btn-group-justified">
+				<a href="#" id="btRewards" onclick="location.href='#'" class="btn btn-default btn-lg">
+					<div class="pull-left">Join Our<br> Rewards</div>&nbsp;&nbsp;<i class="fa fa-plus"></i>
+				</a>
+				<a href="#" id="btJoin" onclick="location.href='#'" class="btn btn-success btn-lg">Join our Loyalty Programs</a>
+			</div>
+			<!--//Search field Area 3-->
+		</div>
+		<table id="bnew1_table" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>My Total Points</th>
+					<th>My Number in Visits </th>
+					<th>Redeem Point</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="text-center">
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+			</tbody>
+		</table>
+		<!--Rewards lists content-->
+		<a class="bNew1RewardsLists" data-toggle="collapse" href="#collapse0" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<div class="maincontainer">
+				<div class="leftcolumn">
+					<p>New<br> Member</p>
+				</div>
+				<div class="contentwrapper">&nbsp;<div class="merchantsName">
+						<p>Earn a free soda</p>
+					</div><button type="button" id="rwdLock1" class="btn btn-link btn-xs">Locked</button><i class="fa fa-angle-down pull-right"></i></div>
+			</div>
+		</a>
+		<div id="collapse0" class="collapse">
+			<div class="row">
+				<img src="images/gift.png" id="giftrwd" class="img-responsive col-xs-4">
+				<p id="rwdunlck" class="col-xs-4">join to unlock</p>
+				<button id="rwdunlck_btn" class="btn btn-success btn-sm col-xs-4" disabled>Redeem Reward</button>
+			</div>
+		</div>
+		<a class="bNew1RewardsLists" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<div class="maincontainer">
+				<div class="leftcolumn">
+					<p>10<br> Points</p>
+				</div>
+				<div class="contentwrapper">&nbsp;<div class="merchantsName">
+						<p>Earn a free Appetizer</p>
+					</div><button type="button" id="rwdLock1" class="btn btn-link btn-xs">Locked</button><i class="fa fa-angle-down pull-right"></i></div>
+			</div>
+		</a>
+		<div id="collapse1" class="collapse">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Points Required</th>
+						<th>Points Earned</th>
+						<th>Points Needed</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="text-center">
+						<td>10</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="Rewards-Visual-Display" class="container">
+				<div class="row">
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/no-tick.png" class="img-responsive"></div>
+					<div class="col-xs-1"><img src="images/gift.png" class="img-responsive"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--Join Modal-->
+		<div id="join" class="modal align-middle">
+			<form class="modal-content animate" action="" method="post" enctype="multipart/form-data" id="f2">
+				<div id="md1">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<img src="images/clear_logo.png" class="popup-img" />
+						</div>
+					</div>
+				</div>
+
+				<div id="md2">
+					<div class="text-center">
+						<div class="align-self-stretch">
+							<h3 class="f-h" style="text-align:center;"> Congratulations </h3>
+							<h4 id="h22" style="text-align:center;"> You have joined the Bistro</h4>
+							<h2 id="h23">
+								<div class="btnBlock text-center">
+									<a href="b-new-memberships.html" class="btn btn-danger btn-cons btn2" size="14" id="check-in2"><strong> Done </strong> </a>
+									<!--<a href="#" class="btn btn-success btn-cons btn2" id="join"><strong> Done </strong></a>-->
+								</div>
+							</h2>
+						</div>
+
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+		<!--/.Join Modal-->
+
+
+		<!--//Rewards lists content-->
+	</div>
+	<div id="rules" class="tab-pane fade" style="background: #fff; padding: 10px; display: none">
+		<div class="rewardsBulletContainer" class="container">
+			<div class="bullets-header">
+				<h3>REWARD RULES</h3>
+			</div>
+			<ul class="starsul">
+				<li class="stars">1 check-in equals 1 visit which equals 1 point.</li>
+				<li class="stars">No more than one check-in a day is allowed</li>
+				<li class="stars">You can only check-in when you are at our restaurant and only after you order, a purchase is required</li>
+			</ul>
+		</div>
+	</div>
+
+
+
+	<div id="noti" class="tab-pane fade" style="background: #fff; padding: 10px; display: none">
+		<div class="container text-left" style="margin-bottom: 15px;">
+			<div id="toggle-buttons">
+				<span class="margin-r">Email Notification</span>
+				<label class="el-switch pull-right">
+					<input type="checkbox" name="switch" checked="">
+					<span class="el-switch-style"></span>
+				</label>
+			</div>
+		</div>
+		<div class="container text-left">
+			<div id="toggle-buttons">
+				<span class="margin-r">Mobile Notification</span>
+				<label class="el-switch pull-right">
+					<input type="checkbox" name="switch" checked="">
+					<span class="el-switch-style"></span>
+				</label>
+			</div>
+			<div class="button-group text-center">
+				<button action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" class="btn btn-danger btn-lg text-center" id="btn-danger">CANCEL</button>
+				<button onclick="location.href='#'" type="button" class="btn btn-success btn-lg text-center" id="btn-success">SUBMIT</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="btn-gp11">
+		<div class="container">
+			<div id="home" class="tab-pane fade" style="background: #fff; padding: 10px; display: none">
+				<h3 class="hthreeGallery">Business Information</h3>
+				<hr>
+				<table id="bizTable" class="table table-borderless">
+					<thead>
+						<tr>
+							<th scope="col" class="text-left"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><button class="btn btn-success btn-lg btn-block">1st Location</button></td>
+							<td><button class="btn btn-success btn-lg btn-block">2nd Location</button></td>
+							<td><button class="btn btn-success btn-lg btn-block">3rd Location</button></td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+				<table id="bizTable1" class="table table-borderless">
+					<thead>
+						<tr>
+							<th scope="col" class="text-left">Phone</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>XXX XXX XXX</td>
+							<td>XXX XXX XXX</td>
+							<td>XXX XXX XXX</td>
+						</tr>
+					</tbody>
+				</table>
+				<table id="bizTable2" class="table table-borderless">
+					<thead>
+						<tr>
+							<th scope="col" class="text-left">Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>XXX XXX XXX</td>
+							<td>XXX XXX XXX</td>
+							<td>XXX XXX XXX</td>
+						</tr>
+					</tbody>
+				</table>
+				<table id="bizTable3" class="table table-borderless">
+					<thead>
+						<tr>
+							<th scope="col" class="text-left">Website</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>XXX XXX XXX</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="feedback" class="tab-pane fade" style="background: #fff; padding: 10px; display: none">
+				<div class="well text-center">
+					<h1><i action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" class="fa fa-angle-left">&nbsp;&nbsp;</i>Feedback</h1>
+				</div>
+				<div id="feedbackjumbotron" class="jumbotron text-center">
+					<h1 id="feedbackh">How was your visit?</h1>
+					<p class="text-center text-green">Let (Business Name) know</p>
+					<img src="images/happy.jpeg" alt="Happy Face" class="emoji" onclick="location.href='43-Feedback-Page-Alway-Welcome.html'">
+					<img src="images/angry.jpeg" alt="Sad Face" class="emoji" onclick="location.href='43-Feedback-Page-Alway-Welcome.html'">
+				</div>
+			</div>
+
+
+
+
+			<div class="button-group dropdown">
+				<button id="btn1" data-toggle="tab" href="#home" onclick="sho('home')" class="btn btn-default btn-lg btn-block dropdown-toggle" type="button" data-toggle="dropdown">Business Information&nbsp;&nbsp;<i class="fa fa-angle-down pull-right">&nbsp;&nbsp;</i>&nbsp;</button>
+				<button id="btn2" data-toggle="tab" href="#feedback" onclick="sho('feedback')" class="btn btn-default btn-lg btn-block dropdown-toggle" type="button" data-toggle="dropdown">Send us Feedback&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-down pull-right">&nbsp;&nbsp;</i>&emsp;</button>
+				<button id="btn3" data-toggle="tab" href="#rules" onclick="sho('rules')" class="btn btn-default btn-lg btn-block dropdown-toggle" type="button" data-toggle="dropdown">Reward Rules&nbsp;&nbsp;&nbsp;&emsp;&emsp;<i class="fa fa-angle-down pull-right">&nbsp;&nbsp;</i>&emsp;</button>
+				<button id="btn4" data-toggle="tab" href="#noti" onclick="sho('noti')" class="btn btn-default btn-lg btn-block dropdown-toggle" type="button" data-toggle="dropdown">Notifications&nbsp;&nbsp;&emsp;&emsp;&emsp;<i class="fa fa-angle-down pull-right">&nbsp;&nbsp;</i>&emsp;</button>
+			</div>
+		</div>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<!--<script src="js/jquery.nicescroll.min.js"></script>-->
+	<!--<script src="js/nice-scroll.js"></script>-->
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+	<script src="js/join.js"></script>
+	<script>
+		function sho(id) {
+			$("#home").hide();
+			$("#feedback").hide();
+			$("#rules").hide();
+			$("#noti").hide();
+			$("#about").hide();
+			$("#hours").hide();
+			$("#gallery").hide();
+			$("#location").hide();
+
+			$("#" + id + "").show();
+		}
+	</script>
+
+
+</body>
+
+</html>

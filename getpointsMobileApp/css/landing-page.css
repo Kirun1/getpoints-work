@@ -1,0 +1,112 @@
+
+.nav_main .mobile-side-menu li a img {
+	width: 30px;
+	height: 25px;
+}
+.navbar .agile_container .agile_nav_main_left .logo {
+	float: right;
+}
+.nav_main .agile_container .agile_nav_main_left .toggleMenu {
+	display: inline-block;
+}
+.nav_main .agile_container .agile_nav_main_left .toggleMenu a div {
+	width: 35px;
+	height: 5px;
+	background-color: #8cc542;
+	margin: 6px 0;
+}
+.container form {
+	text-align: center;
+}
+.container form button.btn.btn-primary.btn-lg.align-center {
+	border-radius: 0 10px 10px;
+	margin-top: 50px;
+}
+@media only screen and (max-width: 374px) {
+	.logo {
+		display: none;
+		}
+}
+
+
+
+div input {
+	margin: 10px 0;
+}
+div.button-group {
+	margin: 20px 0;
+}
+button .btn .btn-default .btn-lg .align-center {
+	border-radius: 0 10px 10px;
+}
+html body div.container form fieldset button .btn .btn-primary .btn-lg, button .btn .btn-danger .btn-lg  {
+	margin: 10px;
+	display: block;
+}
+body {
+	width: 100%;
+    height: 100%;
+    background-image: url(../images/rsz_sign-up_mobile2.png);
+    background-repeat: no-repeat;
+    background-size: initial;
+		color: #fff;
+}
+
+img.img-responsive {
+	margin-top: 10px;
+}
+@media (min-width: 320px) {
+body {
+    width: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		border: 1px solid red;
+}
+}
+@media (min-width: 375px) {
+body {
+    width: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+}
+}
+div.container {
+	margin-top: 300px;
+}
+}
+@media (min-width: 425px) {
+body {
+    width: 100%;
+		background-repeat: no-repeat;
+		background-size: contain;
+}
+div.container {
+	margin-top: 200px;
+}
+}
+@media (min-width: 768px) {
+body {
+    width: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		border: 1px solid red;
+}
+div.container {
+	margin-top: 450px;
+}
+}
+@media (min-width: 1024px) {
+body {
+    width: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		border: 1px solid red;
+}
+}
+.container form button.btn.btn-danger.btn-lg.align-center {
+    border-radius: 0 10px 10px;
+		background-color: #ed1c24;
+}
+.container a#landing-page-button.btn.bt-success.btn-lg.align-center {
+	border-radius: 10px 0 10px 10px;
+}

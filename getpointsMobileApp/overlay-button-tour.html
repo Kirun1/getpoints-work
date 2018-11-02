@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Overlay - button tour</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="css/dist/checkbox.css">
+	<link rel="stylesheet" type="text/css" href="css/10-My-Memberships-Lists.css" media="all">
+	<!--balloon css -->
+	<link rel="stylesheet" href="css/dist/balloon/balloon.css">
+	<!-- //Custom Theme files -->
+	<script src="../js/jquery/jquery-1.8.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/dd.css" />
+	<script src="../js/msdropdown/jquery.dd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/msdropdown/flags.css" />
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+
+	<script src="js/jquery.cookie.js"></script>
+	<!-- <script>
+		var mp = "";
+		var lat = $.cookie("MyLat");
+		var lng = $.cookie("MyLon");
+		$(document).ready(function() {
+
+
+			$("#k").val(window.localStorage.getItem("GetK"));
+			//// Fetch data
+			if (window.localStorage.getItem("GetK") === null)
+				window.location.href = "5-Sign-UP-Page-1.html"; // signout if no key set to local
+
+
+			$("#countries").change(function() {
+
+				var sel3 = $("#city");
+				sel3.empty();
+
+				$("#city").find('option').remove();
+				var id = $(this).val();
+				$.ajax({
+					type: "GET",
+					url: "" + apiurl + "?page=city&fill=" + id + "",
+
+					success: function(data) {
+						for (var i = 0; i < data.length; i++) {
+							sel3.append('<option value="' + data[i].id + '">' + data[i].desc + '</option>');
+						}
+					}
+				});
+			});
+
+			//#####################################################################
+			$.post("" + apiurl + "?page=categories", {
+					'k': window.localStorage.getItem("GetK")
+				},
+				function(data) {
+					var sel = $("#cats");
+					var sel2 = $("#countries");
+					var sel3 = $("#city");
+					sel.empty();
+					sel2.empty();
+					sel3.empty();
+					for (var i = 0; i < data.cat.length; i++) {
+
+						sel.append('<option value="' + data.cat[i].id + '">' + data.cat[i].desc + '</option>');
+					}
+					for (var i = 0; i < data.country.length; i++) {
+						if (data.country[i].selec == 0)
+							sel2.append('<option value="' + data.country[i].id + '">' + data.country[i].desc + '</option>');
+						else
+							sel2.append('<option value="' + data.country[i].id + '" selected="">' + data.country[i].desc + '</option>');
+					}
+					for (var i = 0; i < data.city.length; i++) {
+						if (data.city[i].selec == 0)
+							sel3.append('<option value="' + data.city[i].id + '">' + data.city[i].desc + '</option>');
+						else
+							sel3.append('<option value="' + data.city[i].id + '" selected="">' + data.city[i].desc + '</option>');
+					}
+				}, "json");
+			//countries
+
+
+			//################## dafult load ################################################################
+			$.blockUI({
+				message: null
+			});
+			jQuery.ajax({
+					url: apiurl,
+					type: 'POST',
+					dataType: "json",
+					data: $('form').serialize(),
+					success: function(r) {
+
+						if (r.status == 1) {
+
+							$.unblockUI();
+							$("#memberships-page-join").html();
+							$("#success").show();
+							$("#success").html("No Reward Found<br /><a href='10-My-Memberships-Lists.html' class='btn btn-warning'>Explore</a>");
+
+						} else {
+							var pko = 0;
+							$("#success").hide();
+							$.unblockUI();
+							var dt = '';
+							jQuery.each(r, function(index, r) {
+								pko = r.pko;
+								dt += '<a href="b-new1.html?id=' + r.mid + '"><div class="maincontainer1-U"><div class="leftcolumn1-U"><p><img src="' + r.logo +
+									'" alt="merchant logo" class="img-responsive"></p></div><div class="contentwrapper1-U">&nbsp;<div class="merchantsName"><p class="rest">' + r.reward + '</p><p class="merchantsCategory"> ' + r.cat + '</p><p class="merchantsCity">' + r.city +
+									'</p></div><div class="unlockedRewards">' + r.points + '</div><i class="fa fa-angle-down pull-right rwdsAngle"></i></div></div></a>';
+								//dt +='<a  href="11a-My-Memberships-Page-Join.html?id='+ r.mid +'"><div id="maincontainer"  ><div id="leftcolumn"><p><img src="'+ r.logo +'" style="max-height:60px;" alt="merchant logo" class="img-responsive"></p></div><div id="contentwrapper">&nbsp;<div id="merchantsName"><p style=" margin-top:-14px;">'+ r.reward+'<button type="button" style="margin-left: 10px;" class="btn btn-warning btn-xs">Active Reward</button></p></div>&nbsp;&nbsp;<div id="glyph"></div></div></div></a>';
+
+							});
+							$("#memb").text(pko);
+							$("#memberships-page-join").html(dt);
+
+						}
+					}
+				}
+
+			);
+
+
+			//###################################################################
+
+
+		}); // end document ready
+
+
+
+
+		// google map
+	</script> -->
+
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+</head>
+
+<body class="bg-feedback fixed">
+	<div class="overlay-static">
+		<div class="text-center">
+		  <div class="overlay-content-1">
+		    <button class="btn btn-xs btn-green-a m-150" type="button" name="button" onclick="location.href='overlay-42-Feedback-Page.html'">Next</button>
+		  </div>
+		</div>
+	</div>
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+
+	<!--Search field Area-->
+	<div id="search-field" class="container">
+		<div class="row">
+			<div id="idBnew1Btn" class="btn-group btn-group-justified">
+				<a href="#" id="bt1" class="btn btn-default">About</a>
+				<a href="#" id="bt2" class="btn btn-default">Hours</a>
+				<a href="#" id="bt3" class="btn btn-default">Gallery</a>
+				<a href="#" id="bt4" class="btn btn-default">Map</a>
+			</div>
+			<!--//Search field Area 3-->
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>My Total Points</th>
+					<th>My Number in Visits </th>
+					<th>Redeemed Point</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="text-center">
+					<td>3</td>
+					<td>3</td>
+					<td>0</td>
+				</tr>
+			</tbody>
+		</table>
+		<!--Rewards lists content-->
+		<a class="bNew1RewardsLists" data-toggle="collapse" href="#collapse0" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<div class="maincontainer">
+				<div class="leftcolumn">
+					<p>New<br> Member</p>
+				</div>
+				<div class="contentwrapper">&nbsp;<div class="merchantsName">
+						<p>Earn a free soda</p>
+					</div><button type="button" id="rwdLock" class="btn btn-link btn-xs">Unlocked</button><i class="fa fa-angle-down pull-right"></i></div>
+			</div>
+		</a>
+
+		<a class="bNew1RewardsLists" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<div class="maincontainer">
+				<div class="leftcolumn">
+					<p>10<br> Points</p>
+				</div>
+				<div class="contentwrapper">&nbsp;<div class="merchantsName">
+						<p>Earn a free Appetizer</p>
+					</div><button type="button" id="rwdLock1" class="btn btn-link btn-xs">Locked</button><i class="fa fa-angle-down pull-right"></i></div>
+			</div>
+		</a>
+		<div id="collapse1" class="collapse">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Points Required</th>
+						<th>Points Earned</th>
+						<th>Points Needed</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="text-center">
+						<td>10</td>
+						<td>3</td>
+						<td>7</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	</div>
+	<div id="btn-gp">
+		<div class="container">
+			<div class="button-group dropdown">
+				<button id="btn1" class="btn btn-default btn-lg btn-block dropdown-toggle btn-orange" type="button"
+				  data-toggle="dropdown">Business Information <span><i data-balloon-visible bg-white data-balloon-length="small" data-balloon="Exit tour &#38; checkin or find popular nearby places" data-balloon-pos="up-right" class="fa fa-question-circle" aria-hidden="true"></i></span> &nbsp;&nbsp;&nbsp;<i class="fa fa-angle-down pull-right white">&nbsp;&nbsp;</i></button>
+				<button id="btn2" class="btn btn-default btn-lg btn-block dropdown-toggle btn-lollipop" type="button"
+				  data-toggle="dropdown">Send us Feedback<span><i data-balloon-visible bg-white data-balloon-length="small" data-balloon="Exit tour &#38; checkin or find popular nearby places" data-balloon-pos="down-left" class="fa fa-question-circle" aria-hidden="true"></i></span>&nbsp;&nbsp;&nbsp;&emsp;<i class="fa fa-angle-down pull-right white">&nbsp;&nbsp;</i></button>
+				<button id="btn3" class="btn btn-default btn-lg btn-block dropdown-toggle  btn-till" type="button" data-toggle="dropdown">Reward Rules&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;<i class="fa fa-angle-down pull-right white">&nbsp;&nbsp;</i></button>
+				<button id="btn4" class="btn btn-default btn-lg btn-block dropdown-toggle btn-blue" type="button" data-toggle="dropdown">Notifications&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;<i class="fa fa-angle-down pull-right white">&nbsp;&nbsp;</i></button>
+			</div>
+		</div>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+	<!--Redemption approval modals-->
+	<script src="js/redemption-approval.js"></script>
+</body>
+
+</html>

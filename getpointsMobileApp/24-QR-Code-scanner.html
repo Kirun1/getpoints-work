@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>24 QR code scanner</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<!--balloon css -->
+	<link rel="stylesheet" href="css/dist/balloon/balloon.css">
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+
+	<script>
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		function onDeviceReady() {
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		}
+
+		var onSuccess = function(position) {
+
+			window.localStorage.setItem("mylat", position.coords.latitude);
+			window.localStorage.setItem("mylng", position.coords.longitude);
+
+
+		};
+		// onError Callback receives a PositionError object
+		//
+		function onError(error) {
+			navigator.notification.alert('Turn your location ON in order to get proper checkin', null, 'Error', 'Done');
+			window.localStorage.setItem("mylat", '');
+			window.localStorage.setItem("mylng", '');
+		}
+	</script>
+	</script>
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+
+<body id="qrcodescanner_pg" class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<script>
+			$(function() {
+				$("#loadsidehtml").load("side.html");
+			});
+		</script>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/slide-from-top.js"></script>
+	<script type="text/javascript" src="js/side-menu.js"></script>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<div class="well text-center">
+		<h1 style="margin-top: 15px;"><i action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" class="fa fa-angle-left">&nbsp;&nbsp;</i>QR code Scanner</h1>
+	</div>
+	<div class="container text-center">
+		<p class="text-center">Open your QR code scanner in your Getpoints App and hold it in this screen's brackets until it registers</p>
+	</div>
+	<img src="images/QR_Code_Scanner1.svg" id="qrcodescanner_img" class="img-responsive">
+	<div id="qrcodescanner_btns" class="button-group" id="setb">
+		<button onClick="window.location='b-unlocked-rewards-membership-page.html';" class="btn btn-topleft btn-lg align-center"> CANCEL </button>
+		<button class="btn btn-topright btn-lg align-center" onclick="location.href = 'scan.html';">SCAN NOW</button>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	</div>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+</body>
+
+</html>

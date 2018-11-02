@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>5 Sign Up Page 1</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+	<script>
+		$(document).bind("mobileinit", function() {
+			$.support.cors = true;
+			$.mobile.allowCrossDomainPages = true;
+		});
+	</script>
+	<!-- <script>
+		//$(document).bind("mobileinit", function() {
+		// $.support.cors = true;
+		// $.mobile.allowCrossDomainPages = true;
+		//});
+
+		$(document).ready(function() {
+
+			if (window.localStorage.getItem("GetK") != null) {
+				window.location.href = "my-membership.html"; // signout if no key set to local
+			}
+
+			$("#Submit").click(function(e) {
+				e.preventDefault();
+
+				$.blockUI({
+					message: null
+				});
+
+				//var dg='{email: "' + $("#email").val() + '", password : "' + $("#pass").val() + '", type : "Login"}';
+				jQuery.ajax({
+						url: apiurl,
+						type: 'POST',
+						dataType: "json",
+
+						data: {
+							"type": "Login",
+							"email": "" + $("#email").val() + "",
+							"pass": "" + $("#pass").val() + "",
+							"ut": "1"
+						},
+						success: function(r) {
+							if (r.status > 1) {
+								$.unblockUI();
+
+								navigator.notification.alert('Wrong Email or Password!', null, 'Error', 'Done');
+
+
+							}
+							if (r.status == 1) {
+								window.localStorage.setItem("GetK", r.k);
+								window.localStorage.setItem("Getname", r.name);
+								if (r.cardnot == 1)
+									window.localStorage.setItem("Gcard", 1);
+
+
+								window.location.href = "8-Welcome-Page.html";
+
+								$.unblockUI();
+							}
+						},
+						error: function(r2) {
+							//$.unblockUI();
+							//navigator.notification.alert('Please try again!',null,'Error','Done');
+
+						}
+					}
+
+				);
+
+			});
+		});
+	</script> -->
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+</head>
+
+<body id="bgFive" class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<!-- nav -->
+		<!--side menu-->
+		<div class="nav_main">
+			<!--//side menu-->
+			<!--Top Nav bar-->
+			<div class="navbar">
+				<div class="container">
+					<div class="nav_main_left">
+						<!--logo-->
+						<div class="logo1">
+							<img src="images/logo.png" id="welkam_logo" class="img-responsive" alt="logo" width="250" height="auto">
+						</div>
+						<!--//logo-->
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/slide-from-top.js"></script>
+		<script type="text/javascript" src="js/side-menu.js"></script>
+		<!--//Top Nav bar-->
+		<!-- //nav -->
+		<div id="fiveContainer" class="container">
+			<div class="text-center">
+			</div>
+			<form id="fiveForm">
+				<div class="form-group">
+					<input class="form-control input-md text-center" type="text" id="email" placeholder="Enter your Email">
+					<input class="form-control input-md text-center" type="password" id="pass" placeholder="Enter your Password">
+				</div>
+				<div id="passwordRecovery">
+					<a href="7b_Sign_In_Link.html">
+						<p class="text-center">Forgot password</p>
+					</a>
+				</div>
+				<div id="fivebtn1" class="button-group">
+					<button onclick="location.href='5a-Sign-UP-Page-1.html'" type="button" class="btn btn-default btn-lg align-center">Sign Up</button>
+					<button id="Submit" type="button" class="btn btn-success btn-lg align-center">Log In</button>
+				</div>
+
+				<legend style="display: none1">&nbsp;&nbsp;&nbsp;</legend>
+				<a style="display: none1" class="btn btn-lg btn-block">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+				<a style="display: none1" class="btn btn-lg ">&nbsp;&nbsp;&nbsp;</a>
+
+			</form>
+		</div>
+		<!-- menu-js -->
+		<script src="js/classie.js"></script>
+		<script src="js/main.js"></script>
+		<!-- //menu-js -->
+		<!-- nice scroll-js -->
+		<script src="js/jquery.nicescroll.min.js"></script>
+		<script src="js/nice-scroll.js"></script>
+		<!-- //nice scroll-js -->
+		<!-- Bootstrap core JavaScript
+	    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="js/bootstrap.js"></script>
+		<!-- //footer -->
+
+		<!-- form-effect -->
+		<script src="js/classie.js"></script>
+		<script src="js/form-effect.js"></script>
+		<!-- //form-effect -->
+</body>
+
+</html>

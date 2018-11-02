@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>overlay - 22 My QR code</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" type="text/css" href="css/17-Gifted-Rewards.css" media="all">
+	<!--balloon css -->
+	<link rel="stylesheet" href="css/dist/balloon/balloon.css">
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+	<!-- <script>
+		$(document).ready(function() {
+
+			if (window.localStorage.getItem("GetK") === null)
+				window.location.href = "2-intro-page.html"; // signout if no key set to local
+
+			$("#uname").text(window.localStorage.getItem("Getname"));
+
+			$('#qrcode').attr('src', 'https://chart.googleapis.com/chart?cht=qr&chl=' + window.localStorage.getItem("GetK") + '&chs=250x250&chld=L|0');
+
+		}); // end document ready
+	</script> -->
+
+<body id="qrcode_pg" class="bg-feedback">
+	<div class="overlay-static">
+		<div class="text-center">
+		  <div class="overlay-content-1">
+		    <button class="btn btn-xs btn-green-a m-150" type="button" name="button" onclick="location.href='overlay-35-Settings-2.html'">Next</button>
+		  </div>
+		</div>
+	</div>
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<script>
+			$(function() {
+				$("#loadsidehtml").load("side.html");
+			});
+		</script>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<div class="well text-center">
+		<h1 style="margin-top: 15px;"><i action="action" type="button" value="Back" class="fa fa-angle-left">&nbsp;&nbsp;</i>My QR code</h1>
+	</div>
+	<div class="container text-center">
+		<div class="page-header">
+			<h3><span id="uname"></span>'s QR code</h3>
+		</div>
+		<p class="text-center">Hold the below QR code infront of the tablet's scanner and wait until it registers the image</p>
+		<img src="" id="qrcode" class="img-responsive">
+		<!--<div id="qrcode_btns" class="button-group">
+      			<button class="btn btn-danger btn-lg align-center">CANCEL</button>
+      			<button class="btn btn-success btn-lg align-center">SCAN</button>
+      		</div>-->
+	</div>
+	<div class="text-center">
+	  <i data-balloon-visible bg-white data-balloon-length="large" data-balloon="Some businesses use our tablet based loyalty program like coffee shops, hair salons, gyms and retail businesses. With our tablets, you can easily check-in with your phone &#35;, your email or your own unique QR code. " data-balloon-pos="down" class="fa fa-question-circle" aria-hidden="true"></i>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	</div>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+      
+   
+        <title>QRCode Reader APP</title>
+    </head>
+    <body>
+
+        <div data-role="page" id="home">
+            <div style=" margin-top: 40%"></div>
+            <div style=" border:2px red dotted; width:80%; height: 270px; margin:auto;"></div>
+
+             <div style="text-align:center;">
+                <button  class="btn btn-lg btn-info" style="width:100%; position: absolute; bottom: 70; left:0; display: block; background: #69cec0; color:#fff; padding: 20px; border: 0px; font-size: 20px; " id="sc">Scan Now</button>
+                <button id="can"  class="btn btn-lg btn-danger" style="width:100%; position: absolute; bottom: 0; left:0; background: #ff6666; color:#fff; padding: 20px; border: 0px; font-size: 20px; " id="scc" >Cancel</button>
+            </div>
+        </div>
+
+       
+
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+   
+         <script type="text/javascript" src="cordova.js"></script>   
+      
+        
+      
+        <script>
+            
+            
+        
+            
+            function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+
+            
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+	
+	QRScanner.prepare(onDone); // show the prompt
+ 
+function onDone(err, status){
+  if (err) {
+   navigator.notification.alert(err,null,'Error','Done');
+   
+   window.location.href = "24-QR-Code-scanner.html";
+  }
+  if (status.authorized) {
+    
+        QRScanner.scan(displayContents);
+        $( "#can" ).click(function() {
+      QRScanner.destroy(function(status){
+	  
+   	});
+   window.location.href = "24-QR-Code-scanner.html";
+});
+function displayContents(err, text){
+   var rid=text.split("|");
+     	QRScanner.destroy(function(status){
+	  
+   	});
+ window.location.href = "verify.html?rid="+ rid[1] +"&mid="+ rid[2]+"";
+  
+}
+
+// Make the webview transparent so the video preview is visible behind it. 
+QRScanner.show();
+  } else if (status.denied) {
+ QRScanner.openSettings();
+  } else {
+     navigator.notification.alert("No Cemera Access",null,'Error','Done'); 
+    window.location.href = "24-QR-Code-scanner.html";
+  }
+}
+ 
+}
+
+
+
+
+
+
+
+
+
+
+           
+
+
+        </script>
+    </body>
+</html>

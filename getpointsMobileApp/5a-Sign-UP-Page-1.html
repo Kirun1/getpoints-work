@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>5a-Sign-UP-Page-1</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+
+	<!-- <script>
+		$(document).ready(function() {
+			var id = getUrlVars()["id"];
+
+			if (!id)
+				$("#rid").val();
+			else
+				window.localStorage.setItem("ridgp", id);
+
+			var t = getUrlVars()["t"];
+			if (!t)
+				$("#t").val();
+			else
+				window.localStorage.setItem("tgp", t);
+
+
+			$("#k").val(window.localStorage.getItem("GetK"));
+			//// Fetch data
+			if (window.localStorage.getItem("GetK") != null) {
+				window.location.href = "my-membership.html"; // signout if no key set to local
+			}
+
+
+
+			$("#Submit").click(function(e) {
+				e.preventDefault();
+				$.blockUI({
+					message: null
+				});
+
+				jQuery.ajax({
+						url: apiurl,
+						type: 'POST',
+						dataType: "json",
+						data: $('form').serialize(),
+						success: function(r) {
+							if (r.status == 2) {
+								$.unblockUI();
+								navigator.notification.alert('Please enter your name!', null, 'Error', 'Done');
+							}
+							if (r.status == 25) {
+								$.unblockUI();
+								navigator.notification.alert('Please enter your email!', null, 'Error', 'Done');
+							}
+							if (r.status == 3) {
+								$.unblockUI();
+								$("#error").show().delay(4000).fadeOut();
+								navigator.notification.alert('Email already in list!', null, 'Error', 'Done');
+							}
+							if (r.status == 23) {
+								$.unblockUI();
+
+								navigator.notification.alert('Password must be min 6 chracter long!', null, 'Error', 'Done');
+							}
+
+							if (r.status == 22) {
+								$.unblockUI();
+
+								navigator.notification.alert('Password not match with re-enter password!', null, 'Error', 'Done');
+							}
+
+							if (r.status == 21) {
+								$.unblockUI();
+
+								navigator.notification.alert('Please enter your password!', null, 'Error', 'Done');
+							}
+
+							if (r.status == 31) {
+								$.unblockUI();
+
+								navigator.notification.alert('Try again!', null, 'Error', 'Done');
+							}
+
+							if (r.status == 5) {
+								$.unblockUI();
+								$("#error").show().delay(4000).fadeOut();
+								$("#error").html("login again");
+							}
+							if (r.status == 1) {
+
+								$.unblockUI();
+								window.localStorage.setItem("GetK", r.k);
+								window.localStorage.setItem("Gcard", 1);
+								window.localStorage.setItem("Getname", $("#fname").val());
+
+								window.location.href = "5b-sign-UP-Page-1.html";
+							}
+							window.scrollTo(0, 0);
+						}
+					}
+
+				);
+
+
+			}); // end submit
+
+
+		}); // end document ready
+	</script> -->
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+
+<body class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/slide-from-top.js"></script>
+	<script type="text/javascript" src="js/side-menu.js"></script>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<div class="container">
+		<div class="page-header text-center">
+			<h3>Sign Up Now</h3>
+		</div>
+
+		<form>
+			<div class="form-group">
+				<input class="form-control input-md text-center" type="text" id="fname" name="fname" placeholder="Enter your First Name">
+				<input class="form-control input-md text-center" type="text" id="lname" name="lname" placeholder="Enter your Last Name">
+				<input class="form-control input-md text-center" type="email" id="email" name="email" placeholder="Enter your Email">
+
+				<input class="form-control input-md text-center" type="password" id="pwd" name="pass" placeholder="Create Your password">
+				<input class="form-control input-md text-center" type="password" id="cpwd" name="pass2" placeholder="Confirm password">
+				<input type="hidden" name="page" id="page" value="newprofile" />
+
+			</div>
+			<button id="Submit" type="button" class="btn btn-primary btn-lg align-center">NEXT</button>
+		</form>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	</div>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>5b Sign Up Page 1</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+	<!-- Custom Theme files -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/all.js"></script>
+	<script type="text/javascript" src="jquery.blockUI.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+
+	<!-- <script>
+		$(document).ready(function() {
+
+			if (window.localStorage.getItem("GetK") === null)
+				window.location.href = "5-Sign-UP-Page-1.html"; // signout if no key set to local
+
+
+			$("#k").val(window.localStorage.getItem("GetK"));
+			$("#fiveBenter").click(function(e) {
+				e.preventDefault();
+				$.blockUI({
+					message: null
+				});
+
+				jQuery.ajax({
+						url: apiurl,
+						type: 'POST',
+						dataType: "json",
+						data: $('form').serialize(),
+						success: function(r) {
+
+
+							if (r.status == 1) {
+
+								$.unblockUI();
+								window.location.href = "6-sign-UP-Page-2.html";
+							}
+							if (r.status == 3) {
+								$.unblockUI();
+
+								navigator.notification.alert('Phone already exist!', null, 'Error', 'Done');
+							}
+
+						}
+					}
+
+				);
+
+
+			}); // end submit
+
+
+		}); // end document ready
+	</script> -->
+	<!--//js-->
+	<!--css-->
+	<!--//css-->
+</head>
+
+<body id="fiveB_pg" class="bg-feedback">
+	<!-- nav -->
+	<!--side menu-->
+	<div class="nav_main">
+		<div class="overlay"></div>
+		<div class="mobile-side-menu" id="loadsidehtml">
+
+		</div>
+		<!--//side menu-->
+		<!--Top Nav bar-->
+		<div class="navbar">
+			<div class="container">
+				<div class="nav_main_left">
+					<!--logo-->
+					<div class="logo">
+						<img src="images/logo.png" class="img-responsive" alt="logo" width="250" height="auto">
+					</div>
+					<!--//logo-->
+					<!--Menu Button-->
+					<div class="toggleMenu">
+						<a href="#">
+							<div></div>
+							<div></div>
+							<div></div>
+						</a>
+					</div>
+					<!--//Menu Button-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//Top Nav bar-->
+	<!-- //nav -->
+	<div class="container">
+		<div class="page-header text-center">
+			<h3>Account Verification</h3>
+		</div>
+		<div class="fiveA">
+			For password and account security verification<br>
+			Please enter your phone number
+		</div>
+		<form class="fiveB">
+
+			<div class="form-group">
+				<input type="hidden" name="k" id="k" value="" />
+				<input type="hidden" name="page" id="page" value="updatephone" />
+				<div class="inputWrapper">
+					<div class="cCodeInput">Country Code<input class="form-control input-md text-center" type="text" id="cCode" name="phone" placeholder="+XXX"></div>
+					<div class="cTelInput">Phone Number<input class="form-control input-md text-center" type="text" id="phone" name="phone" placeholder="XXX XXX XXX"></div>
+
+				</div>
+
+			</div>
+
+			<button id="fiveBenter" type="button" class="btn btn-primary btn-lg align-center">ENTER</button>
+		</form>
+	</div>
+	<!-- menu-js -->
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //menu-js -->
+	<!-- nice scroll-js -->
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/nice-scroll.js"></script>
+	<!-- //nice scroll-js -->
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //footer -->
+
+	<!-- form-effect -->
+	<script src="js/classie.js"></script>
+	<script src="js/form-effect.js"></script>
+	<!-- //form-effect -->
+</body>
+
+</html>

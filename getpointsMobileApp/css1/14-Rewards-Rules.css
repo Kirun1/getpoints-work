@@ -1,0 +1,48 @@
+
+button#btn1.btn.btn-default.btn-lg.btn-block {
+	margin-top: 10px;
+}
+.button-group div {
+	margin: 20px auto;
+}
+img.img-circle {
+	margin: 40px 20px auto;
+}
+.banner span {
+	background-color: #fff;
+	font-size: 16px;
+	margin-top: 60px;
+	border-radius: 10px 10px 0 0;
+	border-bottom: 3px solid #d1d2d4;
+}
+
+#btn1-success {
+	margin-top: 20px;
+	height: 100px;
+}
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+ul.starsul {
+  margin: 2em 0;
+}
+
+li.stars {
+  margin: 1em;
+  margin-left: 3em;
+}
+
+li.stars:before {
+  content: '\f006';
+  font-family: 'FontAwesome';
+  float: left;
+  margin-left: -1.5em;
+  color: #FFA500;
+}
+div#banner-content.clearfix img.img-responsive.pull-left {
+	padding-top: 60px;
+}
